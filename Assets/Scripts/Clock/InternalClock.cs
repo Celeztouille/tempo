@@ -33,6 +33,7 @@ public class InternalClock : MonoBehaviour
         {
             emitter = new UnityEvent();
         }
+        Debug.Log("coucou");
     }
 
     void Update()
