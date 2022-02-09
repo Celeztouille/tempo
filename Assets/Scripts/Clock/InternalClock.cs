@@ -8,8 +8,11 @@ public class InternalClock : MonoBehaviour
     // Timer period (in seconds)
     private static float period;
 
-    // Emitter that will be invoked every clock tick
+    // Event that will be invoked every clock tick
     [HideInInspector] public static UnityEvent emitter;
+
+    // Event that will be invoked every period update
+    [HideInInspector] public static UnityEvent clockUpdateEvent;
 
     private float timer = 0f; // Clock internal timer
     private float timerModWindow = 0.05f; // Time window on which the event can be invoked
@@ -23,7 +26,7 @@ public class InternalClock : MonoBehaviour
         Period     // in seconds
     }
 
-    // Generate new emitter on Awake
+    // Generate new events on Awake
     // By default : period is one second (60bpm)
     void Awake()
     {
@@ -33,7 +36,11 @@ public class InternalClock : MonoBehaviour
         {
             emitter = new UnityEvent();
         }
-        Debug.Log("coucou");
+        if (clockUpdateEvent == null)
+        {
+            clockUpdateEvent = new UnityEvent();
+        }
+
     }
 
     void Update()
@@ -79,6 +86,16 @@ public class InternalClock : MonoBehaviour
 
             default:
                 break;
+        }
+
+        // Send messages to functions that depends on the period
+        if (clockUpdateEvent != null)
+        {
+            clockUpdateEvent.Invoke();
+        }
+        else
+        {
+            Debug.LogError("cannot invoke clockUpdateEvent : event is null");
         }
     }
 
