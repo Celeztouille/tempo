@@ -8,33 +8,48 @@ public class InternalClock : MonoBehaviour
     // Timer period (in seconds)
     private static float period;
 
+    // Number of clock ticks in one beat
+    private static int ticksPerBeat;
+
     // Event that will be invoked every clock tick
-    [HideInInspector] public static UnityEvent emitter;
+    [HideInInspector] public static UnityEvent tickEvent;
+
+    // Event that will be invoked every beat
+    [HideInInspector] public static UnityEvent beatEvent;
 
     // Event that will be invoked every period update
     [HideInInspector] public static UnityEvent clockUpdateEvent;
 
     private float timer = 0f; // Clock internal timer
-    private float timerModWindow = 0.05f; // Time window on which the event can be invoked
+    private int tickCount; // Clock tick counter
+    private float timerModWindow = 0.03f; // Time window on which the event can be invoked
     private bool invokedOnce = false; // bool to check if the event was invoked this clock tick
 
     // Clock internal timer formatting : used for Set and Get methods
     public enum ClockFormat
     {
-        Frequency, // in Hertz
-        BPM,       // in BPM
-        Period     // in seconds
+        Frequency,          // in Hertz
+        BeatsPerMin,        // in beats per minute
+        TicksPerMin,        // in ticks per minute
+        BeatPeriod,         // in seconds (for a beat)
+        TickPeriod          // in seconds (for a tick) 
     }
 
     // Generate new events on Awake
-    // By default : period is one second (60bpm)
+    // By default : period is 0.1 seconds and 8 ticks = 1 beat
     void Awake()
     {
-        period = 1f;
+        period = 0.1f;
+        ticksPerBeat = 8;
+        tickCount = 0;
 
-        if (emitter == null)
+        if (tickEvent == null)
         {
-            emitter = new UnityEvent();
+            tickEvent = new UnityEvent();
+        }
+        if (beatEvent == null)
+        {
+            beatEvent = new UnityEvent();
         }
         if (clockUpdateEvent == null)
         {
@@ -47,13 +62,20 @@ public class InternalClock : MonoBehaviour
     {
         float timerMod = Mathsfs.FloatModulus(timer, period);
 
-        if (emitter != null)
+        if (tickEvent != null)
         {
             // If we're in the timer window and event was not already invoked
             if (!invokedOnce && timerMod < timerModWindow)
             {
-                emitter.Invoke();
+                tickEvent.Invoke();
                 invokedOnce = true; // Block further invocations
+
+                if (tickCount % ticksPerBeat == 0)
+                {
+                    beatEvent.Invoke();
+                }
+
+                tickCount++;
             }
 
             // When we're out of the window : unblock invocations for the upcoming window
@@ -68,7 +90,7 @@ public class InternalClock : MonoBehaviour
     }
 
     // Set up clock internal timer
-    public static void SetPeriod(float value, ClockFormat format = ClockFormat.Period)
+    public static void SetPeriod(float value, ClockFormat format = ClockFormat.BeatPeriod)
     {
         switch (format)
         {
@@ -76,11 +98,19 @@ public class InternalClock : MonoBehaviour
                 period = 1f / value;
                 break;
 
-            case ClockFormat.BPM:
+            case ClockFormat.BeatsPerMin:
+                period = ticksPerBeat / (value / 60f);
+                break;
+
+            case ClockFormat.TicksPerMin:
                 period = 1f / (value / 60f);
                 break;
 
-            case ClockFormat.Period:
+            case ClockFormat.BeatPeriod:
+                period = value / ticksPerBeat;
+                break;
+
+            case ClockFormat.TickPeriod:
                 period = value;
                 break;
 
@@ -100,17 +130,23 @@ public class InternalClock : MonoBehaviour
     }
 
     // Get clock internal timer
-    public static float GetPeriod(ClockFormat format = ClockFormat.Period)
+    public static float GetPeriod(ClockFormat format = ClockFormat.BeatPeriod)
     {
         switch (format)
         {
             case ClockFormat.Frequency:
                 return 1f / period;
 
-            case ClockFormat.BPM:
+            case ClockFormat.TicksPerMin:
                 return (1f / period) * 60f;
 
-            case ClockFormat.Period:
+            case ClockFormat.BeatsPerMin:
+                return (1f / period) * 60f / ticksPerBeat;
+
+            case ClockFormat.BeatPeriod:
+                return period * ticksPerBeat;
+
+            case ClockFormat.TickPeriod:
                 return period;
 
             default:

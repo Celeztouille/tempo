@@ -25,11 +25,11 @@ public class UtilitiesTests : MonoBehaviour
         mat = GetComponent<MeshRenderer>().sharedMaterial;
     }
 
-    private void Start() => InternalClock.emitter.AddListener(ChangeColor);
+    private void Start() => InternalClock.tickEvent.AddListener(ChangeColor);
 
     private void TestClock()
     {
-        Debug.Log(InternalClock.GetPeriod(InternalClock.ClockFormat.BPM));
+        Debug.Log(InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin));
     }
 
     private void ChangeColor()

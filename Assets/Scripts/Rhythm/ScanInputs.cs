@@ -5,6 +5,12 @@ using UnityEngine.InputSystem;
 
 public class ScanInputs : MonoBehaviour
 {
+    // Script containing the player actions to trigger (jump, fire, parry)
+    private PlayerActions playerAction;
+
+    // Map playerAction
+    private void Awake() => playerAction = GameObject.Find("Avatar").GetComponent<PlayerActions>();
+
     // Check if we hit the right note at the right timing
     private void HitNote(Note.Type type)
     {
@@ -33,12 +39,25 @@ public class ScanInputs : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.right, length, LayerMask.GetMask("Note"));
 
 
-        // If we hit the note : do something
+        // If we hit the note : do the corresponding player action
         // relative distance of the note from the action bar is given by hit.distance - RhythmHandler.aBackWindow 
         if (hit.collider != null)
         {
             Debug.Log(hit.distance - RhythmHandler.aBackWindow);
             Destroy(hit.transform.gameObject);
+
+            switch (type)
+            {
+                case Note.Type.Up:
+                    playerAction.Jump();
+                    break;
+                case Note.Type.Mid:
+                    playerAction.Fire();
+                    break;
+                case Note.Type.Down:
+                    playerAction.Parry();
+                    break;
+            }
         }
     }
 

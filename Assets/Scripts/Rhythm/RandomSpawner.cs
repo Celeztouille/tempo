@@ -6,7 +6,7 @@ public class RandomSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject note;
 
-    private void Start() => InternalClock.emitter.AddListener(InstantiateRandom);
+    private void Start() => InternalClock.beatEvent.AddListener(InstantiateRandom);
 
     // Spawn a random note each beat
     void InstantiateRandom()
