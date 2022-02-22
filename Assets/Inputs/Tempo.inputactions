@@ -6,7 +6,7 @@
             "id": "fdf81f2f-b71f-43fe-a3ba-29b985e467c3",
             "actions": [
                 {
-                    "name": "HitUp",
+                    "name": "StepLeft",
                     "type": "Button",
                     "id": "dea90d40-441f-4d1e-9a86-bb2eaf555f39",
                     "expectedControlType": "Button",
@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "HitMid",
+                    "name": "StepRight",
                     "type": "Button",
                     "id": "3657d604-b7c6-47f3-bb21-bf0aa35f5e95",
                     "expectedControlType": "Button",
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "HitDown",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "a9760e63-d86a-4bc9-b6f4-691569f245b9",
                     "expectedControlType": "Button",
@@ -58,11 +58,11 @@
                 {
                     "name": "",
                     "id": "1a8e3495-1981-444a-a7f5-0a4992a86e6d",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "HitUp",
+                    "action": "StepLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -80,22 +80,22 @@
                 {
                     "name": "",
                     "id": "68d79b07-4f11-4a60-bcdf-63265a497789",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "HitDown",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "74d51861-40ee-453a-b106-b777cb6580df",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "HitMid",
+                    "action": "StepRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -68,8 +68,9 @@ public class BossGrid
 
     }
 
-    // Gravity emulator : move object downwards at <fallspeed> if object is mid-air
-    public static void Fall(Transform tr, int fallSpeed)
+    // Gravity emulator : move object downwards at <fallspeed> if object is mid-air 
+    // Return true if object is falling and false if object is already grounded
+    public static bool Fall(Transform tr, int fallSpeed)
     {
         if (tr.position.y > 0)
         {
@@ -79,13 +80,17 @@ public class BossGrid
 
             Physics.Raycast(ray, out hit, FightHandler.gheight / (float)FightHandler.gridystep, LayerMask.GetMask("Solid"));
 
+            // DEBUG : Draw plateform detector
+            Debug.DrawRay(tr.position, Vector3.down * FightHandler.gheight / (float)FightHandler.gridystep, Color.yellow, 0.2f);
+            // DEBUG
+
             if (hit.collider == null)
             {
                 Move(tr, 0, -fallSpeed, OutOfBounds.Clamp);
+                return true;
             }
+            return false;
         }
-
-        // Draw plateform detector
-        Debug.DrawRay(tr.position, Vector3.down * FightHandler.gheight / (float)FightHandler.gridystep, Color.yellow, 0.2f);
+        return false;
     }
 }

@@ -38,11 +38,12 @@ public class PlayerActions : MonoBehaviour
     private int jumpTickCount;
     private int parryTickCount;
 
-
-
     // To check if player is jumping / parrying or not
-    public bool isJumping = false;
-    public bool isParrying = false;
+    [HideInInspector] public bool isJumping = false;
+    [HideInInspector] public bool isParrying = false;
+
+    // To check if player is on the ground or not
+    private bool isGrounded = true;
 
     // Initialise tick counters at <duration>+1 :
     // trigger will set counter at 0 and counter will trigger consequent event at <duration>
@@ -57,9 +58,13 @@ public class PlayerActions : MonoBehaviour
     // Jump function
     public void Jump()
     {
-        BossGrid.Move(transform, 0, jumpHeight, BossGrid.OutOfBounds.Clamp);
-        isJumping = true;
-        jumpTickCount = 0;
+        if (isGrounded)
+        {
+            BossGrid.Move(transform, 0, jumpHeight, BossGrid.OutOfBounds.Clamp);
+            isJumping = true;
+            isGrounded = false;
+            jumpTickCount = 0;
+        }
     }
 
     // Fire function
@@ -103,7 +108,7 @@ public class PlayerActions : MonoBehaviour
         // If is not jumping : activate gravity
         if (!isJumping)
         {
-            BossGrid.Fall(transform, fallSpeed);
+            isGrounded = !BossGrid.Fall(transform, fallSpeed);
         }
 
         jumpTickCount++;

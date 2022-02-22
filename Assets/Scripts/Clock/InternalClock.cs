@@ -20,6 +20,8 @@ public class InternalClock : MonoBehaviour
     // Event that will be invoked every period update
     [HideInInspector] public static UnityEvent clockUpdateEvent;
 
+    private static float initialPeriod; // Save the period on start for when we need to return to the initial period
+
     private float timer = 0f; // Clock internal timer
     private int tickCount; // Clock tick counter
     private float timerModWindow = 0.03f; // Time window on which the event can be invoked
@@ -36,11 +38,12 @@ public class InternalClock : MonoBehaviour
     }
 
     // Generate new events on Awake
-    // By default : period is 0.1 seconds and 8 ticks = 1 beat
+    // By default : period is 0.2 seconds and 4 ticks = 1 beat
     void Awake()
     {
-        period = 0.1f;
-        ticksPerBeat = 8;
+        period = 0.2f;
+        initialPeriod = period;
+        ticksPerBeat = 4;
         tickCount = 0;
 
         if (tickEvent == null)
@@ -99,7 +102,7 @@ public class InternalClock : MonoBehaviour
                 break;
 
             case ClockFormat.BeatsPerMin:
-                period = ticksPerBeat / (value / 60f);
+                period = 1f / (value * ticksPerBeat / 60f);
                 break;
 
             case ClockFormat.TicksPerMin:
@@ -151,6 +154,30 @@ public class InternalClock : MonoBehaviour
 
             default:
                 return 0f;
+        }
+    }
+
+    // coeff will multiply bpm => we need to divide period
+    public static void AddBPM(float value)
+    {
+        float tmp = GetPeriod(ClockFormat.BeatsPerMin) + value;
+        SetPeriod(tmp, ClockFormat.BeatsPerMin);
+    }
+
+
+    // set bpm to initial value
+    public static void ResetBPM()
+    {
+        period = initialPeriod;
+
+        // Send messages to functions that depends on the period
+        if (clockUpdateEvent != null)
+        {
+            clockUpdateEvent.Invoke();
+        }
+        else
+        {
+            Debug.LogError("cannot invoke clockUpdateEvent : event is null");
         }
     }
 }
