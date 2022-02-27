@@ -20,7 +20,7 @@ public class InternalClock : MonoBehaviour
     // Event that will be invoked every period update
     [HideInInspector] public static UnityEvent clockUpdateEvent;
 
-    private static float initialPeriod; // Save the period on start for when we need to return to the initial period
+    public static float initialPeriod; // Save the period on start for when we need to return to the initial period
 
     private float timer = 0f; // Clock internal timer
     private int tickCount; // Clock tick counter
@@ -38,11 +38,11 @@ public class InternalClock : MonoBehaviour
     }
 
     // Generate new events on Awake
-    // By default : period is 0.2 seconds and 4 ticks = 1 beat
+    // By default : 4 ticks = 1 beat
     void Awake()
     {
-        period = 0.2f;
-        initialPeriod = period;
+        period = 10000f; // Period is set really high at first so that all clock stuff do not begin when launching the game
+        initialPeriod = period; 
         ticksPerBeat = 4;
         tickCount = 0;
 
@@ -93,7 +93,7 @@ public class InternalClock : MonoBehaviour
     }
 
     // Set up clock internal timer
-    public static void SetPeriod(float value, ClockFormat format = ClockFormat.BeatPeriod)
+    public static void SetPeriod(float value, ClockFormat format = ClockFormat.BeatPeriod, bool setInitialPeriod = false)
     {
         switch (format)
         {
@@ -119,6 +119,11 @@ public class InternalClock : MonoBehaviour
 
             default:
                 break;
+        }
+
+        if (setInitialPeriod)
+        {
+            initialPeriod = period;
         }
 
         // Send messages to functions that depends on the period
@@ -157,16 +162,24 @@ public class InternalClock : MonoBehaviour
         }
     }
 
-    // coeff will multiply bpm => we need to divide period
+    // SetPeriod() handles functions :
+
+    // Add some BPM to the clock
     public static void AddBPM(float value)
     {
         float tmp = GetPeriod(ClockFormat.BeatsPerMin) + value;
         SetPeriod(tmp, ClockFormat.BeatsPerMin);
     }
 
+    // Multiply the frequency of the clock by a value
+    public static void MultiplyFrequency(float value)
+    {
+        float tmp = GetPeriod(ClockFormat.Frequency) * value;
+        SetPeriod(tmp, ClockFormat.Frequency);
+    }
 
-    // set bpm to initial value
-    public static void ResetBPM()
+    // Set BPM to initial value
+    public static void ResetPeriod()
     {
         period = initialPeriod;
 

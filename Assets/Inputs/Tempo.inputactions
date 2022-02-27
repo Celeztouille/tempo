@@ -58,7 +58,7 @@
                 {
                     "name": "",
                     "id": "1a8e3495-1981-444a-a7f5-0a4992a86e6d",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -91,7 +91,7 @@
                 {
                     "name": "",
                     "id": "74d51861-40ee-453a-b106-b777cb6580df",
-                    "path": "<Keyboard>/k",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",

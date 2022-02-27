@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// Scan the inputs for the player actions (jump and stuff)
 public class ScanInputs : MonoBehaviour
 {
     // Reference to Multiplier script (contains action windows and timestamps)
@@ -27,12 +28,14 @@ public class ScanInputs : MonoBehaviour
 
         // Measure time difference between timebeat and input
         float delta = Time.fixedTime - multiplier.timeBeat;
+
+        // If time between input and last timebeat is greater than time between input and following timebeat : snap to following timebeat
         if (delta > period / 2f)
         {
             delta -= period;
         }
 
-        // if we hit
+        // if we hit : do the action
         if (Mathf.Abs(delta) < multiplier.goodWdw)
         {
 

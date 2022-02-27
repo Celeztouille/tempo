@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 // Debug class to spawn enemies, walls and projectiles with debug keys
 public class SpawnHazards : MonoBehaviour
 {
+    /* ========= UNUSED ===========
     [SerializeField] private GameObject solid, enemy, projectile;
 
     // Wall spawner
@@ -52,5 +53,5 @@ public class SpawnHazards : MonoBehaviour
         {
             Instantiate(projectile, new Vector3(FightHandler.gwidth, 0f, 1000f), Quaternion.identity);
         }
-    }
+    }*/
 }

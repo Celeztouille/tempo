@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{af6db51e-3754-4244-a5cc-bd34937c7973}">
+		<property name="name">
+			<value>BPMChange</value>
+		</property>
+		<relationship name="folder">
+			<destination>{cfad7580-f733-4c72-ae76-8904a00b19b1}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8a3eabe3-8704-4342-908d-ddab05024b49}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8a3eabe3-8704-4342-908d-ddab05024b49}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

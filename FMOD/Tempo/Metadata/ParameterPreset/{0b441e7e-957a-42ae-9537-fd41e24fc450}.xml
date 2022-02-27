@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{0b441e7e-957a-42ae-9537-fd41e24fc450}">
+		<property name="name">
+			<value>BPMChangeDiscrete</value>
+		</property>
+		<relationship name="folder">
+			<destination>{cfad7580-f733-4c72-ae76-8904a00b19b1}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7bdd4ce4-6ce9-4ca7-9bcb-eb2d9475a4c6}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7bdd4ce4-6ce9-4ca7-9bcb-eb2d9475a4c6}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>11</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

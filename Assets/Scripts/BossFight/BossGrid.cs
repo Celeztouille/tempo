@@ -9,10 +9,10 @@ public class BossGrid
     // Possible behaviours when an object is out of bounds
     public enum OutOfBounds
     {
-        Allow,
-        Clamp,
-        Destroy,
-        DestroyAfter
+        Allow,          // let go and continue
+        Clamp,          // clamp the movement to stick at the bound of the grid
+        Destroy,        // destroy the game object immediately
+        DestroyAfter    // destroy the game object behind the grid
     }
 
     // Main function to move objects within the grid
@@ -29,7 +29,7 @@ public class BossGrid
         // Default option : let go and continue
         // First option : destroy the game object immediately
         // Second option : destroy the game object behind the grid
-        // Second option : clamp the movement to stick at the bound of the grid
+        // Third option : clamp the movement to stick at the bound of the grid
         if (allowOutOfBounds == OutOfBounds.Destroy)
         {
             if (tr.position.y > FightHandler.gheight || tr.position.x > FightHandler.gwidth || tr.position.x < 0 || tr.position.y < 0)
@@ -72,25 +72,76 @@ public class BossGrid
     // Return true if object is falling and false if object is already grounded
     public static bool Fall(Transform tr, int fallSpeed)
     {
+        // Don't fall when object is at the bottom of the grid
         if (tr.position.y > 0)
         {
 
             Ray ray = new Ray(tr.position, Vector3.down);
             RaycastHit hit;
 
-            Physics.Raycast(ray, out hit, FightHandler.gheight / (float)FightHandler.gridystep, LayerMask.GetMask("Solid"));
+            // Check if is there is a platform below
+            Physics.Raycast(ray, out hit, (fallSpeed * FightHandler.gheight) / (float)FightHandler.gridystep, LayerMask.GetMask("Solid"));
 
-            // DEBUG : Draw plateform detector
-            Debug.DrawRay(tr.position, Vector3.down * FightHandler.gheight / (float)FightHandler.gridystep, Color.yellow, 0.2f);
-            // DEBUG
 
+            // If no platform -> move object <fallspeed> steps downwards
             if (hit.collider == null)
             {
                 Move(tr, 0, -fallSpeed, OutOfBounds.Clamp);
-                return true;
+
+                // Reactivate scroll and multiplier when falling (we need to do that if the player is stuck behind a wall)
+                FightHandler.ToggleScroll(true);
+
+                return true; // Object is still falling -> we return true
             }
-            return false;
+
+            // If there's a platform less than <fallspeed> steps below -> fall the remaining steps 
+            else
+            {
+                // Compute remaining steps
+                int stepsDown = Mathf.FloorToInt(hit.distance / ((FightHandler.gheight) / (float)FightHandler.gridystep));
+
+                if (stepsDown > 0)
+                {
+                    Move(tr, 0, -stepsDown);
+
+                    // Reactivate scroll and multiplier when falling (we need to do that if the player is stuck behind a wall)
+                    FightHandler.ToggleScroll(true);
+                }
+                return false; // Object is now grounded -> we return false
+            }
         }
         return false;
+    }
+
+    // Snap an object to the nearest point on the grid
+    public static void SnapToGrid(Transform tr)
+    {
+        float scaleX = FightHandler.gwidth / (float)FightHandler.gridxstep;
+        float scaleY = FightHandler.gheight / (float)FightHandler.gridystep;
+        
+        // Also scale the object to one unit of the grid
+        tr.localScale = new Vector3(scaleX, scaleY, 5f);
+
+        float posx = Mathsfs.FloatModulus(tr.position.x, scaleX);
+
+        if (posx < scaleX / 2f)
+        {
+            tr.position -= posx * Vector3.right;
+        }
+        else
+        {
+            tr.position += (scaleX - posx) * Vector3.right;
+        }
+
+        float posy = Mathsfs.FloatModulus(tr.position.y, scaleY);
+
+        if (posy < scaleY / 2f)
+        {
+            tr.position -= posy * Vector3.up;
+        }
+        else
+        {
+            tr.position += (scaleY - posy) * Vector3.up;
+        }
     }
 }
