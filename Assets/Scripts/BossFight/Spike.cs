@@ -25,7 +25,7 @@ public class Spike : MonoBehaviour
             PlayerLives.AddLife(-1);
 
             Score.SetMultiplier(1);
-            InternalClock.ResetPeriod();
+            Music.ResetBPM();
         }
     }
 }
