@@ -3,18 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Projectile
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Note
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Solid
+  - Spike
+  - Player
   - 
   - 
   - 

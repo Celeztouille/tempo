@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class UtilitiesTests : MonoBehaviour
 {
@@ -24,21 +25,11 @@ public class UtilitiesTests : MonoBehaviour
         mat = GetComponent<MeshRenderer>().sharedMaterial;
     }
 
-    private void Start() => InternalClock.emitter.AddListener(ChangeColor);
-
-    private void Update()
-    {
-        float clock = InternalClock.GetPeriod(InternalClock.ClockFormat.Frequency);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            InternalClock.SetPeriod(clock + 1f, InternalClock.ClockFormat.Frequency);
-        }
-    }
+    private void Start() => InternalClock.beatEvent.AddListener(ChangeColor);
 
     private void TestClock()
     {
-        Debug.Log(InternalClock.GetPeriod(InternalClock.ClockFormat.BPM));
+        Debug.Log(InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin));
     }
 
     private void ChangeColor()
@@ -50,6 +41,15 @@ public class UtilitiesTests : MonoBehaviour
         else
         {
             mat.color = Color.red;
+        }
+    }
+
+    public void TestSetClock(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            float clock = InternalClock.GetPeriod(InternalClock.ClockFormat.Frequency);
+            InternalClock.SetPeriod(clock + 1f, InternalClock.ClockFormat.Frequency);
         }
     }
 }
