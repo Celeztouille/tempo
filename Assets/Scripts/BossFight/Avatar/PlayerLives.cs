@@ -30,6 +30,9 @@ public class PlayerLives : MonoBehaviour
         if (value > 0 || InvincibilityFrames.state == InvincibilityFrames.State.Vulnerable)
         {
             lives += value;
+
+            // Play spikes sound effect
+            FMODUnity.RuntimeManager.PlayOneShot("event:/World/Spikes");
         }
 
         if (activateInvincibilityFrames)

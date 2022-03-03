@@ -99,6 +99,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 175
+--- !u!114 &-3906440135099174118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusic/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-3760322505907791758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +144,30 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-3299693486358734151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusic/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -186,10 +234,10 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637819233158309672
+  lastModified: 637819303791413252
   FileSizes:
   - Name: Desktop
-    Value: 116384
+    Value: 129216
   Exists: 1
 --- !u!114 &-2356848491216779661
 MonoBehaviour:
@@ -235,7 +283,7 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637819233158368309
+  lastModified: 637819303791444365
   FileSizes:
   - Name: Desktop
     Value: 1102
@@ -266,7 +314,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 550
 --- !u!114 &-606279991065004880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +366,7 @@ MonoBehaviour:
   - {fileID: -2393494113861099817}
   StringsBanks:
   - {fileID: -1518153573516385460}
-  cacheTime: 637819233158368309
+  cacheTime: 637819303791444365
   cacheVersion: 9
 --- !u!114 &307643217280579256
 MonoBehaviour:
@@ -497,7 +545,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 2710
 --- !u!114 &3265185188305713870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,8 +645,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 3865482297919473291}
-  - {fileID: -3052078137181043507}
+  - {fileID: -3299693486358734151}
+  - {fileID: -3906440135099174118}
   MinDistance: 1
   MaxDistance: 20
   Length: 7441

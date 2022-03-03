@@ -41,6 +41,9 @@ public class Multiplier : MonoBehaviour
     [HideInInspector] public float timeBeat;
     private float timeInput;
 
+    // Bool to check if last beat was missed or not
+    private bool lastMissed = true;
+
     // ==== DEBUG ====
     [SerializeField] private GameObject debugText;
     // ==== DEBUG ====
@@ -129,7 +132,11 @@ public class Multiplier : MonoBehaviour
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Step2");
                 }
-                    
+
+                // Last beat wasn't missed
+                lastMissed = false;
+
+
 
             }
 
@@ -181,8 +188,13 @@ public class Multiplier : MonoBehaviour
         // UI Feedback
         hitFeedback.SetHitFeedback(HitFeedback.Precision.Miss);
 
-        // Play miss sound effect
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Miss");
+        // Play sound effect if first beat missed
+        if (!lastMissed)
+        {
+            // Play miss sound effect
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Miss");
+        }
+        lastMissed = true;
     }
 
     // Input Listener (for the steps) : check if an input was pressed, determines which key is pressed and call Step() with the corresponding step sent
