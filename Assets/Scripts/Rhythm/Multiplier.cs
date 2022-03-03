@@ -77,7 +77,7 @@ public class Multiplier : MonoBehaviour
         }
 
         // DEBUG Show current BPM
-        debugText.GetComponent<TextMeshProUGUI>().SetText(((int)InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin)).ToString());
+        debugText.GetComponent<TextMeshProUGUI>().text = ((int)InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin)).ToString();
         // DEBUG
 
         // if we hit and multiplier is not frozen
@@ -120,6 +120,17 @@ public class Multiplier : MonoBehaviour
                     hitFeedback.SetHitFeedback(HitFeedback.Precision.Good);
                 }
 
+                // Play step sound effect
+                if (stepState == StepState.Left)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Step1");
+                }
+                else
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Step2");
+                }
+                    
+
             }
 
             // if we hit the wrong step
@@ -154,7 +165,7 @@ public class Multiplier : MonoBehaviour
             Miss();
 
             // DEBUG Update BPM Display
-            debugText.GetComponent<TextMeshProUGUI>().SetText(InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString());
+            debugText.GetComponent<TextMeshProUGUI>().text = InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString();
             // DEBUG
         }
     }
@@ -169,6 +180,9 @@ public class Multiplier : MonoBehaviour
 
         // UI Feedback
         hitFeedback.SetHitFeedback(HitFeedback.Precision.Miss);
+
+        // Play miss sound effect
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Miss");
     }
 
     // Input Listener (for the steps) : check if an input was pressed, determines which key is pressed and call Step() with the corresponding step sent

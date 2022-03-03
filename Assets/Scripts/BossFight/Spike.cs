@@ -26,6 +26,9 @@ public class Spike : MonoBehaviour
 
             Score.SetMultiplier(1);
             Music.ResetBPM();
+
+            // Play spikes sound effect
+            FMODUnity.RuntimeManager.PlayOneShot("event:/World/Spikes");
         }
     }
 }
