@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{5dc80735-705c-42a7-8949-2ffbb67c500a}">
+		<property name="assetPath">
+			<value>osu-combo-break-note-miss-sound-effect.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.7599999999999998</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{021584bb-d5b6-4d7d-9aa6-61c3ffddc5f3}</destination>
+		</relationship>
+	</object>
+</objects>
