@@ -42,7 +42,7 @@ public class ScanInputs : MonoBehaviour
             switch (type)
             {
                 case InputType.Jump:
-                    playerAction.Jump();
+                    //playerAction.Jump();
                     break;
                 default:
                     break;

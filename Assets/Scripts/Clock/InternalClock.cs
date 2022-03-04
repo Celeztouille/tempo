@@ -22,10 +22,12 @@ public class InternalClock : MonoBehaviour
 
     public static float initialPeriod; // Save the period on start for when we need to return to the initial period
 
-    private float timer = 0f; // Clock internal timer
     private int tickCount; // Clock tick counter
     private float timerModWindow = 0.03f; // Time window on which the event can be invoked
     private bool invokedOnce = false; // bool to check if the event was invoked this clock tick
+
+    // Beats counter
+    [HideInInspector] public static float beatsCount;
 
     // Clock internal timer formatting : used for Set and Get methods
     public enum ClockFormat
@@ -45,6 +47,7 @@ public class InternalClock : MonoBehaviour
         initialPeriod = period; 
         ticksPerBeat = 4;
         tickCount = 0;
+        beatsCount = 0;
 
         if (tickEvent == null)
         {
@@ -63,7 +66,7 @@ public class InternalClock : MonoBehaviour
 
     void Update()
     {
-        float timerMod = Mathsfs.FloatModulus(timer, period);
+        float timerMod = Mathsfs.FloatModulus(Time.time, period);
 
         if (tickEvent != null)
         {
@@ -75,6 +78,7 @@ public class InternalClock : MonoBehaviour
 
                 if (tickCount % ticksPerBeat == 0)
                 {
+                    beatsCount++;
                     beatEvent.Invoke();
                 }
 
@@ -89,7 +93,7 @@ public class InternalClock : MonoBehaviour
         }
 
         // Update timer
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
     }
 
     // Set up clock internal timer
