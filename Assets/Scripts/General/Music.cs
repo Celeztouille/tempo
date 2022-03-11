@@ -15,7 +15,7 @@ public class Music : MonoBehaviour
     private static int semiToneParemeter = 0;
 
     // Init FMOD event
-    void Start() => event_fmod = FMODUnity.RuntimeManager.CreateInstance("event:/LevelMusic");
+    void Start() => event_fmod = FMODUnity.RuntimeManager.CreateInstance("event:/Rhythm/LevelMusic");
 
     // Toggle to start the music
     public static void StartMusic() => event_fmod.start();

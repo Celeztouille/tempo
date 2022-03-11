@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMOD;
 
 // Class where all the character actions are defined
 public class PlayerActions : MonoBehaviour
@@ -98,6 +99,9 @@ public class PlayerActions : MonoBehaviour
                     Multiplier.freezeMultiplier = false;
                 }
             }
+
+            // Play jump sound effect
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Saut");
         }
     }
 

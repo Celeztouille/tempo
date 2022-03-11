@@ -27,6 +27,15 @@ public class Multiplier : MonoBehaviour
     // Needed perfects/goods in a row to speed up the music and clock
     [SerializeField] private int beatsPerSpeedUp = 5;
 
+    // Chance of moving backwards one step when missing a beat (for the first time)
+    [SerializeField] [Range(0f, 1f)] private float firstMissBackChance = 0.9f;
+
+    // Chance of moving backwards one step when missing a beat (in a miss streak)
+    [SerializeField] [Range(0f, 1f)] private float missBackChance = 0.2f;
+
+    // Reference to player transform
+    [SerializeField] private Transform playerTr;
+
     // Reference to the HitFeedback script (to manage feedback display)
     [SerializeField] private HitFeedback hitFeedback;
 
@@ -41,17 +50,26 @@ public class Multiplier : MonoBehaviour
     [HideInInspector] public float timeBeat;
     private float timeInput;
 
+    // Bool to check if last beat was missed or not
+    private bool lastMissed = true;
+
     // ==== DEBUG ====
     [SerializeField] private GameObject debugText;
     // ==== DEBUG ====
 
+    // Script containing the player actions to trigger (jump, fire, parry)
+    private PlayerActions playerAction;
+
     public enum StepState
     {
         Left,
-        Right
+        Right,
+        Jump,
     }
 
-    private StepState stepState = StepState.Left;
+    // Map playerAction
+    private void Awake() => playerAction = GameObject.Find("Avatar").GetComponent<PlayerActions>();
+
 
     private void Start() => InternalClock.beatEvent.AddListener(UpdateTimeBeat);
 
@@ -60,6 +78,52 @@ public class Multiplier : MonoBehaviour
     {
         timeBeat = Time.fixedTime; 
     }
+
+    // Update all stuff depending on how precise the player is on the beat
+    private void UpdateScoreMultAndBPM(float delta)
+    {
+        // Update all stuff only when multiplier is not frozen
+        if (!freezeMultiplier)
+        {
+            speedUpCpt++;
+
+            // If we reached <beatsPerSpeedUp> consecutive hits : speed up the music
+            if (speedUpCpt > beatsPerSpeedUp)
+            {
+                Music.IncrementBPM();
+                speedUpCpt = 0;
+            }
+
+            // Check if it was perfect or good and add points consequently
+            if (Mathf.Abs(delta) < perfectWdw)
+            {
+                Score.AddToScore(scorePerfectStep);
+                perfCpt++;
+
+                // UI Feedback
+                hitFeedback.SetHitFeedback(HitFeedback.Precision.Perfect);
+
+                // If we made <perfectForMult> perfect kicks in a row : add 1 to multiplier
+                if (perfCpt >= perfectForMult)
+                {
+                    Score.IncrementMultiplier();
+                    perfCpt = 0;
+                }
+            }
+            else
+            {
+                Score.AddToScore(scoreGoodStep);
+                perfCpt = 0;
+
+                // UI Feedback
+                hitFeedback.SetHitFeedback(HitFeedback.Precision.Good);
+            }
+
+            // Last beat wasn't missed
+            lastMissed = false;
+        }
+    }
+
 
     // Check if we hit the input at the right timing
     private void Step(StepState step)
@@ -77,52 +141,35 @@ public class Multiplier : MonoBehaviour
         }
 
         // DEBUG Show current BPM
-        debugText.GetComponent<TextMeshProUGUI>().SetText(((int)InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin)).ToString());
+        debugText.GetComponent<TextMeshProUGUI>().text = ((int)InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin)).ToString();
         // DEBUG
 
         // if we hit and multiplier is not frozen
-        if (Mathf.Abs(delta) < goodWdw && !freezeMultiplier)
+        if (Mathf.Abs(delta) < goodWdw)
         {
-            // if we hit the right step
-            if (step == stepState)
+            // if we jump (and we are not already jumping)
+            if (step == StepState.Jump && !playerAction.isJumping)
             {
-                speedUpCpt++;
-
-                // If we reached <beatsPerSpeedUp> consecutive hits : speed up the music
-                if (speedUpCpt > beatsPerSpeedUp)
-                {
-                    Music.IncrementBPM();
-                    speedUpCpt = 0;
-                }
-
-                // Check if it was perfect or good and add points consequently
-                if (Mathf.Abs(delta) < perfectWdw)
-                {
-                    Score.AddToScore(scorePerfectStep);
-                    perfCpt++;
-
-                    // UI Feedback
-                    hitFeedback.SetHitFeedback(HitFeedback.Precision.Perfect);
-
-                    // If we made <perfectForMult> perfect kicks in a row : add 1 to multiplier
-                    if (perfCpt >= perfectForMult)
-                    {
-                        Score.IncrementMultiplier();
-                        perfCpt = 0;
-                    }   
-                }
-                else
-                {
-                    Score.AddToScore(scoreGoodStep);
-                    perfCpt = 0;
-
-                    // UI Feedback
-                    hitFeedback.SetHitFeedback(HitFeedback.Precision.Good);
-                }
-
+                playerAction.Jump();
+                UpdateScoreMultAndBPM(delta);
             }
 
-            // if we hit the wrong step
+            else if (step == StepState.Left && InternalClock.beatsCount % 2 == 1)
+            {
+                UpdateScoreMultAndBPM(delta);
+
+                // Play step sound effect
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Step1");
+            }
+            else if (step == StepState.Right && InternalClock.beatsCount % 2 == 0)
+            {
+                UpdateScoreMultAndBPM(delta);
+
+                // Play step sound effect
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Step2");
+            }
+
+            // if we hit the wrong step or jumped at the wrong time
             else
             {
                 Miss();
@@ -132,16 +179,6 @@ public class Multiplier : MonoBehaviour
         else
         {
             Miss();
-        }
-
-        // Update stepState
-        if (stepState == StepState.Left)
-        {
-            stepState = StepState.Right;
-        }
-        else
-        {
-            stepState = StepState.Left;
         }
     }
 
@@ -154,7 +191,7 @@ public class Multiplier : MonoBehaviour
             Miss();
 
             // DEBUG Update BPM Display
-            debugText.GetComponent<TextMeshProUGUI>().SetText(InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString());
+            debugText.GetComponent<TextMeshProUGUI>().text = InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString();
             // DEBUG
         }
     }
@@ -169,6 +206,28 @@ public class Multiplier : MonoBehaviour
 
         // UI Feedback
         hitFeedback.SetHitFeedback(HitFeedback.Precision.Miss);
+
+        // play sound effect and move player backwards if first beat missed
+        if (!lastMissed)
+        {
+            // Move player one step backwards
+            if (Random.Range(0f, 1f) < firstMissBackChance)
+            {
+                BossGrid.Move(playerTr, -1, 0);
+            }
+
+            // Play miss sound effect
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Miss");
+        }
+        else
+        {
+            // Move player one step backwards
+            if (Random.Range(0f, 1f) < missBackChance)
+            {
+                BossGrid.Move(playerTr, -1, 0);
+            }
+        }
+        lastMissed = true;
     }
 
     // Input Listener (for the steps) : check if an input was pressed, determines which key is pressed and call Step() with the corresponding step sent
@@ -184,6 +243,12 @@ public class Multiplier : MonoBehaviour
             {
                 Step(StepState.Right);
             }
+            if (context.action.name == "Jump")
+            {
+                Step(StepState.Jump);
+            }
         }
+
+       
     }
 }

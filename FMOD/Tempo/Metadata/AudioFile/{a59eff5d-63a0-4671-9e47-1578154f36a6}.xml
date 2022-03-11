@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a59eff5d-63a0-4671-9e47-1578154f36a6}">
+		<property name="assetPath">
+			<value>Swooshes_Whoosh_Short_Wind_Gusts_Dry_SND55502.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.29455208333333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{021584bb-d5b6-4d7d-9aa6-61c3ffddc5f3}</destination>
+		</relationship>
+	</object>
+</objects>

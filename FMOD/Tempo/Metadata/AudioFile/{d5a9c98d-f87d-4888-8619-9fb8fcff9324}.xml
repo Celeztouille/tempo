@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d5a9c98d-f87d-4888-8619-9fb8fcff9324}">
+		<property name="assetPath">
+			<value>Footsteps_Human_Linoleum_Sneaker_Medium_SND1083_1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.20904166666666665</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{021584bb-d5b6-4d7d-9aa6-61c3ffddc5f3}</destination>
+		</relationship>
+	</object>
+</objects>
