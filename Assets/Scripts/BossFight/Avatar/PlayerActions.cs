@@ -114,7 +114,6 @@ public class PlayerActions : MonoBehaviour
     // Count elapsed ticks on each ticks
     void TickUpdate()
     {
-        print(isGrounded);
         // Trigger un-event functions for jump and parry
         if (jumpTickCount == jumpDuration)
         {

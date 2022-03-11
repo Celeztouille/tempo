@@ -182,9 +182,28 @@ public class Multiplier : MonoBehaviour
         }
     }
 
+    // Hit left+right to jump
+    bool hitLeft = false, hitRight = false;
+    float timer = 0f;
+
     // Check if we don't hit at all for one beat long : reset bpm
     private void Update()
     {
+        // Hit left+right to jump
+        if (hitLeft && hitRight)
+        {
+            Step(StepState.Jump);
+        }
+        if (timer > 0.05f)
+        {
+            if (hitLeft)
+                Step(StepState.Left);
+            if (hitRight)
+                Step(StepState.Right);
+            hitLeft = false;
+            hitRight = false;
+        }
+
         if (Time.fixedTime > timeInput + InternalClock.GetPeriod() * fullBeatWindowCoeff)
         {
             timeInput += InternalClock.GetPeriod(); // Update timeInput to get the timestamp of the missed beat (which is the last beat)
@@ -194,6 +213,8 @@ public class Multiplier : MonoBehaviour
             debugText.GetComponent<TextMeshProUGUI>().text = InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString();
             // DEBUG
         }
+
+        timer += Time.deltaTime;
     }
 
     // What we need to do when we miss a beat
@@ -229,6 +250,8 @@ public class Multiplier : MonoBehaviour
         }
         lastMissed = true;
     }
+    
+
 
     // Input Listener (for the steps) : check if an input was pressed, determines which key is pressed and call Step() with the corresponding step sent
     public void InputPressed(InputAction.CallbackContext context)
@@ -237,11 +260,15 @@ public class Multiplier : MonoBehaviour
         {
             if (context.action.name == "StepLeft")
             {
-                Step(StepState.Left);
+                //Step(StepState.Left);
+                hitLeft = true;
+                timer = 0f;
             }
             if (context.action.name == "StepRight")
             {
-                Step(StepState.Right);
+                //Step(StepState.Right);
+                hitRight = true;
+                timer = 0f;
             }
             if (context.action.name == "Jump")
             {
