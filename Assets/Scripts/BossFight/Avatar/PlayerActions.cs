@@ -18,33 +18,19 @@ public class PlayerActions : MonoBehaviour
     // Fall speed in steps per tick (gravity)
     [SerializeField] [Range(1, 5)] private int fallSpeed;
 
-    /* UNUSED FOR NOW
+    [SerializeField] [Range(0f, 1f)] private float smoothTime = 0.2f;
 
-    [Header("Projectile")]
+    [SerializeField] [Range(0f, 0.5f)] private float smoothTimeFalling = 0.05f;
 
-    // Projectile prefab
-    [SerializeField] private GameObject projectile;
-
-    [Header("Parry")]
-
-    // Duration of the parry attack in ticks
-    [SerializeField] [Range(1, 20)] private int parryDuration;
-
-    // Shield prefab (renderer-only)
-    [SerializeField] private GameObject shield;
-
-    // Local instance of shield
-    private GameObject shieldInstance;
-
-    */
+    // Used for smoothing movements
+    private Vector3 goalPos;
+    private Vector3 refVelocity;
 
     // Local tick counters
     private int jumpTickCount;
-    // UNUSED private int parryTickCount;
 
     // To check if player is jumping / parrying or not
     [HideInInspector] public bool isJumping = false;
-    // UNUSED [HideInInspector] public bool isParrying = false;
 
     // To check if player is on the ground or not
     private bool isGrounded = true;
@@ -54,10 +40,24 @@ public class PlayerActions : MonoBehaviour
     private void Awake()
     {
         jumpTickCount = jumpDuration + 1;
-        // UNUSED parryTickCount = parryDuration + 1;
+
+        goalPos = transform.position;
     }
 
     private void Start() => InternalClock.tickEvent.AddListener(TickUpdate);
+
+    private void Update()
+    {
+        if (goalPos.y >= transform.position.y)
+        {
+            transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref refVelocity, smoothTime);
+        }
+        else
+        {
+            transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref refVelocity, smoothTimeFalling);
+        }
+    }
+
 
     // Jump function
     public void Jump()
@@ -73,8 +73,14 @@ public class PlayerActions : MonoBehaviour
 
             // If no platform -> jump at max height
             if (hit.collider == null)
-            {
-                BossGrid.Move(transform, 0, jumpHeight, BossGrid.OutOfBounds.Clamp);
+            {                
+                SmoothMove(0, jumpHeight);
+                Vector3 clamp = BossGrid.CheckBounds(transform, BossGrid.OutOfBounds.Clamp);
+                if (clamp != Vector3.zero)
+                {
+                    goalPos = clamp;
+                }
+
                 isJumping = true;
                 isGrounded = false;
                 jumpTickCount = 0;
@@ -91,7 +97,7 @@ public class PlayerActions : MonoBehaviour
 
                 if (stepsUp > 0)
                 {
-                    BossGrid.Move(transform, 0, stepsUp);
+                    SmoothMove(0, stepsUp);
                     isJumping = true;
                     isGrounded = false;
                     jumpTickCount = 0;
@@ -105,53 +111,74 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
-    /* UNUSED
-    // Fire function
-    public void Fire()
-    {
-        Instantiate(projectile, transform.position, Quaternion.identity);
-    }
-
-    // Parry function
-    public void Parry()
-    {
-        // Do not instantiate a new shield when already parrying
-        if (!isParrying)
-        {
-            shieldInstance = Instantiate(shield, transform.position + 5 * Vector3.right, Quaternion.identity, transform);
-        }
-        isParrying = true;
-        parryTickCount = 0;
-    }
-
-    // Un-parry function
-    void Unparry()
-    {
-        isParrying = false;
-        Destroy(shieldInstance);
-    }*/
-
     // Count elapsed ticks on each ticks
     void TickUpdate()
     {
+        print(isGrounded);
         // Trigger un-event functions for jump and parry
         if (jumpTickCount == jumpDuration)
         {
             isJumping = false;
         }
-        /* UNUSED if (parryTickCount == parryDuration)
-        {
-            Unparry();
-        }*/
 
         // If is not jumping : activate gravity
         if (!isJumping)
         {
-            isGrounded = !BossGrid.Fall(transform, fallSpeed); // Bossgrid.Fall returns a boolean that indicates whether grounded or not
+            isGrounded = !SmoothFall(); // SmoothFall returns a boolean that indicates whether grounded or not
         }
 
         // Increment local tick counter
         jumpTickCount++;
-        // UNUSED parryTickCount++;
+    }
+
+    private void SmoothMove(int x, int y)
+    {
+        // Update the goal position of the object
+        goalPos = transform.position + new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
+                                                   y * (FightHandler.gheight / (float)FightHandler.gridystep),
+                                                   0f);
+        goalPos = BossGrid.SnapToGrid(goalPos);
+    }
+
+
+    private bool SmoothFall()
+    {
+        // Don't fall when object is at the bottom of the grid
+        if (transform.position.y > 0)
+        {
+
+            Ray ray = new Ray(transform.position, Vector3.down);
+            RaycastHit hit;
+            UnityEngine.Debug.DrawRay(transform.position, Vector3.down * FightHandler.gheight, Color.yellow, 1f);
+
+            // Check if is there is a platform below
+            Physics.Raycast(ray, out hit, (fallSpeed * FightHandler.gheight) / (float)FightHandler.gridystep, LayerMask.GetMask("Solid"));
+
+            if (hit.collider == null)
+            {
+                SmoothMove(0, -fallSpeed);
+
+                // Reactivate scroll and multiplier when falling (we need to do that if the player is stuck behind a wall)
+                FightHandler.ToggleScroll(true);
+
+                return true; // Object is still falling -> we return true
+            }
+
+            else 
+            {
+                // Compute remaining steps
+                int stepsDown = Mathf.FloorToInt(hit.distance / ((FightHandler.gheight) / (float)FightHandler.gridystep));
+
+                if (stepsDown > 0)
+                {
+                    SmoothMove(0, -stepsDown);
+
+                    // Reactivate scroll and multiplier when falling (we need to do that if the player is stuck behind a wall)
+                    FightHandler.ToggleScroll(true);
+                }
+                return false;
+            }
+        }
+        return false;
     }
 }
