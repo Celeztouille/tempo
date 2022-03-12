@@ -15,16 +15,9 @@ public class BossGrid
         DestroyAfter    // destroy the game object behind the grid
     }
 
-    // Main function to move objects within the grid
-    public static void Move(Transform tr, int x, int y, OutOfBounds allowOutOfBounds = OutOfBounds.Allow)
+
+    public static Vector3 CheckBounds(Transform tr, OutOfBounds allowOutOfBounds)
     {
-
-        // Move the object
-        tr.position += new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
-                                   y * (FightHandler.gheight / (float)FightHandler.gridystep),
-                                   0f);
-
-
         // Selected behaviours when transform is getting out of the bounds of the grid
         // Default option : let go and continue
         // First option : destroy the game object immediately
@@ -51,21 +44,37 @@ public class BossGrid
             if (tr.position.y > FightHandler.gheight)
             {
                 tr.position = new Vector3(tr.position.x, FightHandler.gheight, tr.position.z);
+                return tr.position;
             }
             if (tr.position.x > FightHandler.gwidth)
             {
                 tr.position = new Vector3(FightHandler.gwidth, tr.position.y, tr.position.z);
+                return tr.position;
             }
             if (tr.position.y < 0)
             {
                 tr.position = new Vector3(tr.position.x, 0, tr.position.z);
+                return tr.position;
             }
             if (tr.position.x < 0)
             {
                 tr.position = new Vector3(0, tr.position.y, tr.position.z);
+                return tr.position;
             }
         }
+        return Vector3.zero;
+    }
 
+    // Main function to move objects within the grid
+    public static void Move(Transform tr, int x, int y, OutOfBounds allowOutOfBounds = OutOfBounds.Allow)
+    {
+
+        // Move the object
+        tr.position += new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
+                                   y * (FightHandler.gheight / (float)FightHandler.gridystep),
+                                   0f);
+
+        CheckBounds(tr, allowOutOfBounds);
     }
 
     // Gravity emulator : move object downwards at <fallspeed> if object is mid-air 
@@ -120,7 +129,7 @@ public class BossGrid
         float scaleY = FightHandler.gheight / (float)FightHandler.gridystep;
         
         // Also scale the object to one unit of the grid
-        tr.localScale = new Vector3(scaleX, scaleY, 5f);
+        //tr.localScale = new Vector3(scaleX, scaleY, 5f);
 
         float posx = Mathsfs.FloatModulus(tr.position.x, scaleX);
 
@@ -143,5 +152,44 @@ public class BossGrid
         {
             tr.position += (scaleY - posy) * Vector3.up;
         }
+    }
+
+    // Snap a Vector3 to the nearest point on the grid
+    public static Vector3 SnapToGrid(Vector3 pos)
+    {
+        float scaleX = FightHandler.gwidth / (float)FightHandler.gridxstep;
+        float scaleY = FightHandler.gheight / (float)FightHandler.gridystep;
+
+        Vector3 newPos = pos;
+
+        float posx = Mathsfs.FloatModulus(newPos.x, scaleX);
+
+        if (posx < scaleX / 2f)
+        {
+            newPos -= posx * Vector3.right;
+        }
+        else
+        {
+            newPos += (scaleX - posx) * Vector3.right;
+        }
+
+        if (pos.y > 0)
+        {
+            float posy = Mathsfs.FloatModulus(newPos.y, scaleY);
+
+            if (posy < scaleY / 2f)
+            {
+                newPos -= posy * Vector3.up;
+            }
+            else
+            {
+                newPos += (scaleY - posy) * Vector3.up;
+            }
+        }
+        else
+        {
+            newPos.y = 0f;
+        }
+        return newPos;
     }
 }
