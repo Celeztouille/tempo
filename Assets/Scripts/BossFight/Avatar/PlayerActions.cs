@@ -130,7 +130,7 @@ public class PlayerActions : MonoBehaviour
         jumpTickCount++;
     }
 
-    private void SmoothMove(int x, int y)
+    public void SmoothMove(int x, int y)
     {
         // Update the goal position of the object
         goalPos = transform.position + new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),

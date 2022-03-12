@@ -234,7 +234,7 @@ public class Multiplier : MonoBehaviour
             // Move player one step backwards
             if (Random.Range(0f, 1f) < firstMissBackChance)
             {
-                BossGrid.Move(playerTr, -1, 0);
+                playerAction.SmoothMove(-1, 0);
             }
 
             // Play miss sound effect
@@ -245,7 +245,7 @@ public class Multiplier : MonoBehaviour
             // Move player one step backwards
             if (Random.Range(0f, 1f) < missBackChance)
             {
-                BossGrid.Move(playerTr, -1, 0);
+                playerAction.SmoothMove(-1, 0);
             }
         }
         lastMissed = true;
