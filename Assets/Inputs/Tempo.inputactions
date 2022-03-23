@@ -58,7 +58,7 @@
                 {
                     "name": "",
                     "id": "1a8e3495-1981-444a-a7f5-0a4992a86e6d",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -80,7 +80,7 @@
                 {
                     "name": "",
                     "id": "68d79b07-4f11-4a60-bcdf-63265a497789",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -90,8 +90,19 @@
                 },
                 {
                     "name": "",
+                    "id": "86f9280f-ca7a-4f57-85d3-3aa29a9e814a",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "74d51861-40ee-453a-b106-b777cb6580df",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
