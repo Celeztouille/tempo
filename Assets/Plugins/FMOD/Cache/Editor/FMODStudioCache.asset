@@ -258,10 +258,10 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637819303791413252
+  lastModified: 637838351081677806
   FileSizes:
   - Name: Desktop
-    Value: 129216
+    Value: 248288
   Exists: 1
 --- !u!114 &-2356848491216779661
 MonoBehaviour:
@@ -292,6 +292,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 7441
+--- !u!114 &-2101220293781946441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusic/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-1518153573516385460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +331,7 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637819303791444365
+  lastModified: 637838351081711610
   FileSizes:
   - Name: Desktop
     Value: 1102
@@ -390,7 +414,7 @@ MonoBehaviour:
   - {fileID: -2393494113861099817}
   StringsBanks:
   - {fileID: -1518153573516385460}
-  cacheTime: 637819303791444365
+  cacheTime: 637838351081711610
   cacheVersion: 9
 --- !u!114 &307643217280579256
 MonoBehaviour:
@@ -519,6 +543,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 7441
+--- !u!114 &2977656995601294984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusic/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &3049723433483728714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,12 +737,12 @@ MonoBehaviour:
     Data4: 1910965678
   Banks:
   - {fileID: -2393494113861099817}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 8868122753304689154}
-  - {fileID: 4465810491234805637}
+  - {fileID: -2101220293781946441}
+  - {fileID: 2977656995601294984}
   MinDistance: 1
   MaxDistance: 20
   Length: 7441
