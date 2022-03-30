@@ -9,6 +9,9 @@ public class AlignToCam : MonoBehaviour
 
     void Update()
     {
-        transform.rotation = Quaternion.FromToRotation(transform.forward, cameraTr.forward);
+        if (transform.forward != cameraTr.forward)
+        {
+            transform.rotation = Quaternion.FromToRotation(transform.forward, cameraTr.forward);
+        }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DetectWalls : MonoBehaviour
 {
+    [HideInInspector] public static bool isBehindGlass = false;
+    [HideInInspector] public static GameObject glassObject = null;
 
     // Detect if player is stuck behind a solid wall
     // This function is subscribed to the beatEvent via the MovingItem script (to ensure it is called BEFORE moving items)
@@ -16,13 +18,28 @@ public class DetectWalls : MonoBehaviour
         // Check if is the player is right behind a wall
         Physics.Raycast(ray, out RaycastHit hit, (FightHandler.globalSpeed * FightHandler.gwidth) / (float)FightHandler.gridxstep, LayerMask.GetMask("Solid"));
 
-        // If player is stuck, stop global scroll and freeze points, multiplier and stuff
+        
         if (hit.collider != null)
         {
-            FightHandler.ToggleScroll(false);
-            Multiplier.freezeMultiplier = true;
-            Score.SetMultiplier(1);
-            Music.ResetBPM();
+            if (hit.collider.tag == "Glass")
+            {
+                isBehindGlass = true;
+                glassObject = hit.collider.gameObject;
+            }
+            // If player is stuck, stop global scroll and freeze points, multiplier and stuff
+            else
+            {
+                FightHandler.ToggleScroll(false);
+                Multiplier.freezeMultiplier = true;
+                Score.SetMultiplier(1);
+                Music.ResetBPM();
+            }
+        }
+        // Reset glass detection tags
+        else
+        {
+            isBehindGlass = false;
+            glassObject = null;
         }
 
         // Scroll and stuff is reactivated when player is jumping

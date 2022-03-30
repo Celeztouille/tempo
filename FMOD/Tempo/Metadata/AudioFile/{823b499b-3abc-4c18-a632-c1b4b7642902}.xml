@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{823b499b-3abc-4c18-a632-c1b4b7642902}">
+		<property name="assetPath">
+			<value>top_kick.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.11629166666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{021584bb-d5b6-4d7d-9aa6-61c3ffddc5f3}</destination>
+		</relationship>
+	</object>
+</objects>

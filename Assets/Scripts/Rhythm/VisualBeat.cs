@@ -44,13 +44,13 @@ public class VisualBeat : MonoBehaviour
     {
         mat.SetFloat("_Size", 1);
 
-        if (mat.GetColor("_Color") == Color.red)
+        if (mat.GetFloat("_Side") == 1f)
         {
-            mat.SetColor("_Color", Color.green);
+            mat.SetFloat("_Side", -1f);
         }
         else
         {
-            mat.SetColor("_Color", Color.red);
+            mat.SetFloat("_Side", 1f);
         }
     }
 }

@@ -20,6 +20,9 @@ public class Music : MonoBehaviour
     // Toggle to start the music
     public static void StartMusic() => event_fmod.start();
 
+    // Toggle to stop the music
+    public static void StopMusic() => event_fmod.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
     // Toggle to make the music (and internal clock) one step faster
     public static void IncrementBPM()
     {

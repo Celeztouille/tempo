@@ -3,6 +3,7 @@ Shader "Unlit/VisualBeat"
     Properties
     {
         _Size ("Size", Range(0, 1)) = 0
+        _Side ("Side", Range(-1, 1)) = 1
         _Thickness ("Thickness", Range(0, 0.3)) = 0.1
         _Color ("Color", Color) = (1,0,0,0)
 
@@ -34,6 +35,7 @@ Shader "Unlit/VisualBeat"
             };
 
             float _Size;
+            float _Side;
             float _Thickness;
             float4 _Color;
 
@@ -54,7 +56,7 @@ Shader "Unlit/VisualBeat"
 
                 sdf = 1-saturate(sdf);
 
-                float4 col = float4(_Color.xyz, sdf);
+                float4 col = float4(_Color.xyz, sdf) * (_Side * coords.x > 0);
 
                 return col;
             }
