@@ -6,7 +6,6 @@ Shader "Unlit/VisualBeat"
         _Side ("Side", Range(-1, 1)) = 1
         _Thickness ("Thickness", Range(0, 0.3)) = 0.1
         _Color ("Color", Color) = (1,0,0,0)
-
     }
     SubShader
     {

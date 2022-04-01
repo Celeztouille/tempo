@@ -433,7 +433,7 @@ MonoBehaviour:
   scoreGoodStep: 50
   perfectForMult: 10
   beatsPerSpeedUp: 4
-  firstMissBackChance: 0.3
+  firstMissBackChance: 0.7
   missBackChance: 0.05
   playerTr: {fileID: 1586737957}
   hitFeedback: {fileID: 2057040421}
@@ -3126,7 +3126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0023477e8e31dd443b507d711f07a1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpDuration: 6
+  jumpDuration: 8
   jumpHeight: 6
   fallSpeed: 2
   smoothTime: 0.2
@@ -3649,7 +3649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1650037377192249107, guid: 86f60d66700edee48bb10e012c463565, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 342.85327
+      value: 274.6
       objectReference: {fileID: 0}
     - target: {fileID: 1650037377192249107, guid: 86f60d66700edee48bb10e012c463565, type: 3}
       propertyPath: m_LocalPosition.y

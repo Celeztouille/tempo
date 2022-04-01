@@ -167,6 +167,7 @@ public class Multiplier : MonoBehaviour
                     // Destroy glass gameObject if we hit glass
                     if (DetectWalls.isBehindGlass)
                     {
+                        Debug.Log("SMASH");
                         Destroy(DetectWalls.glassObject);
                     }
                 }
@@ -191,6 +192,7 @@ public class Multiplier : MonoBehaviour
                     // Destroy glass gameObject if we hit glass
                     if (DetectWalls.isBehindGlass)
                     {
+                        Debug.Log("SMASH");
                         Destroy(DetectWalls.glassObject);
                     }
                 }

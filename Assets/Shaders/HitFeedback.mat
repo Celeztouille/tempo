@@ -32,8 +32,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _SliderGood: 1e-45
-    - _SliderMiss: 0.0059290202
-    - _SliderPerfect: 4.598926e-39
+    - _SliderGood: 6.398487e-27
+    - _SliderMiss: 0.82155913
+    - _SliderPerfect: 0.0000035932183
     m_Colors: []
   m_BuildTextureStacks: []
