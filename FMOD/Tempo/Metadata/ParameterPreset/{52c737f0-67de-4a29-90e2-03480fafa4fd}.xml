@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{52c737f0-67de-4a29-90e2-03480fafa4fd}">
+		<property name="name">
+			<value>FeverStateChange</value>
+		</property>
+		<relationship name="folder">
+			<destination>{cfad7580-f733-4c72-ae76-8904a00b19b1}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{75bca88a-5cc5-4d35-a9ac-49c1f2ec61ca}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{75bca88a-5cc5-4d35-a9ac-49c1f2ec61ca}">
+		<property name="maximum">
+			<value>6</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
