@@ -126,7 +126,7 @@ public class Multiplier : MonoBehaviour
 
 
     // Check if we hit the input at the right timing
-    private void Step(StepState step)
+    private void Step(StepState step, bool hitGlass)
     {
         float period = InternalClock.GetPeriod();
 
@@ -156,17 +156,57 @@ public class Multiplier : MonoBehaviour
 
             else if (step == StepState.Left && InternalClock.beatsCount % 2 == 1)
             {
-                UpdateScoreMultAndBPM(delta);
+                // If we don't hit and there's no glass OR if we hit and there's glass : pass
+                if (DetectWalls.isBehindGlass == hitGlass)
+                {
+                    UpdateScoreMultAndBPM(delta);
 
-                // Play step sound effect
-                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Step1");
+                    // Play step sound effect
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/TopKick");
+
+                    // Destroy glass gameObject if we hit glass
+                    if (DetectWalls.isBehindGlass)
+                    {
+                        Debug.Log("SMASH");
+                        Destroy(DetectWalls.glassObject);
+                    }
+                }
+                // If we hit and there's no glass or if we don't hit and there's glass : miss
+                else
+                {
+                    Miss();
+                }
+                
             }
+            // Same thing goes for the right step
             else if (step == StepState.Right && InternalClock.beatsCount % 2 == 0)
             {
-                UpdateScoreMultAndBPM(delta);
+                // If we don't hit and there's no glass OR if we hit and there's glass : pass
+                if (DetectWalls.isBehindGlass == hitGlass)
+                {
+                    UpdateScoreMultAndBPM(delta);
 
-                // Play step sound effect
-                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Step2");
+                    // Play step sound effect
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Snare");
+
+                    // Destroy glass gameObject if we hit glass
+                    if (DetectWalls.isBehindGlass)
+                    {
+                        Debug.Log("SMASH");
+                        Destroy(DetectWalls.glassObject);
+                    }
+                }
+                // If we hit and there's no glass or if we don't hit and there's glass : miss
+                else
+                {
+                    Miss();
+
+                    // Destroy glass gameObject when passing through
+                    if (DetectWalls.isBehindGlass)
+                    {
+                        Destroy(DetectWalls.glassObject);
+                    }
+                }
             }
 
             // if we hit the wrong step or jumped at the wrong time
@@ -192,16 +232,19 @@ public class Multiplier : MonoBehaviour
         // Hit left+right to jump
         if (hitLeft && hitRight)
         {
-            Step(StepState.Jump);
+            Step(StepState.Jump, false);
+            hitLeft = false;
+            hitRight = false;
         }
         if (timer > 0.05f)
         {
             if (hitLeft)
-                Step(StepState.Left);
+                Step(StepState.Left, false);
             if (hitRight)
-                Step(StepState.Right);
+                Step(StepState.Right, false);
             hitLeft = false;
             hitRight = false;
+
         }
 
         if (Time.fixedTime > timeInput + InternalClock.GetPeriod() * fullBeatWindowCoeff)
@@ -234,7 +277,15 @@ public class Multiplier : MonoBehaviour
             // Move player one step backwards
             if (Random.Range(0f, 1f) < firstMissBackChance)
             {
-                BossGrid.Move(playerTr, -1, 0);
+                playerAction.SmoothMove(-1, 0);
+            }
+            else
+            {
+                // If we are behind glass : step through the glass and break it
+                if (DetectWalls.isBehindGlass)
+                {
+                    Destroy(DetectWalls.glassObject);
+                }
             }
 
             // Play miss sound effect
@@ -245,7 +296,15 @@ public class Multiplier : MonoBehaviour
             // Move player one step backwards
             if (Random.Range(0f, 1f) < missBackChance)
             {
-                BossGrid.Move(playerTr, -1, 0);
+                playerAction.SmoothMove(-1, 0);
+            }
+            else
+            {
+                // If we are behind glass : step through the glass and break it
+                if (DetectWalls.isBehindGlass)
+                {
+                    Destroy(DetectWalls.glassObject);
+                }
             }
         }
         lastMissed = true;
@@ -260,19 +319,21 @@ public class Multiplier : MonoBehaviour
         {
             if (context.action.name == "StepLeft")
             {
-                //Step(StepState.Left);
                 hitLeft = true;
                 timer = 0f;
             }
             if (context.action.name == "StepRight")
             {
-                //Step(StepState.Right);
                 hitRight = true;
                 timer = 0f;
             }
-            if (context.action.name == "Jump")
+            if (context.action.name == "HitLeft")
             {
-                Step(StepState.Jump);
+                Step(StepState.Left, true);
+            }
+            if (context.action.name == "HitRight")
+            {
+                Step(StepState.Right, true);
             }
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // MonoBehaviour for walls
-public class MovingItem : MonoBehaviour
+public class MovingWall : MonoBehaviour
 {
     private float smoothTime = 0.2f;
 
@@ -11,8 +11,13 @@ public class MovingItem : MonoBehaviour
     private Vector3 goalPos;
     private Vector3 refVelocity;
 
+    // Wall detector script
+    private DetectWalls wallDetector;
+
     void Start()
     {
+        // Bind the Wall Detector Script;
+        wallDetector = GameObject.Find("Avatar").GetComponent<DetectWalls>();
 
         BossGrid.SnapToGrid(transform);// Snap all spikes on start
         InternalClock.beatEvent.AddListener(TickUpdate);
@@ -26,6 +31,9 @@ public class MovingItem : MonoBehaviour
     // Move all spike elements at the global scroll speed each tick
     void TickUpdate()
     {
+        // Detect if player is facing a wall before moving all the walls
+        wallDetector.DetectWall();
+
         SmoothMove(-FightHandler.globalSpeed, 0);
     }
 
