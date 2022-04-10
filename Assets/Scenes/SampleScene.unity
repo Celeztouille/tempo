@@ -3126,8 +3126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0023477e8e31dd443b507d711f07a1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpDuration: 8
-  jumpHeight: 6
+  jumpDuration: 4
+  jumpHeight: 3
   fallSpeed: 2
   smoothTime: 0.2
   smoothTimeFalling: 0.05
