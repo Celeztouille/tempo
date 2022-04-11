@@ -3,7 +3,17 @@ guid: 7dba2b94b5b965c4eb79b4339135ca6f
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "B\xE2timent_1"
+    second: {fileID: 2100000, guid: 68180a7e617574a469366534818c6a64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Fen\xEAtres"
+    second: {fileID: 2100000, guid: 2f06ef79f300d9d4296cb0c117db1400, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
