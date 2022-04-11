@@ -21,6 +21,11 @@ public class DisplayTimer : MonoBehaviour
         timer = 0f;
     }
 
+    public static void SaveTime(float time)
+    {
+        timer -= time;
+    }
+
     void Update()
     {
         if (hasStarted)
