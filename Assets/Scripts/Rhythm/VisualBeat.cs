@@ -16,6 +16,8 @@ public class VisualBeat : MonoBehaviour
     // Material of the gameobject
     private Material mat;
 
+    private bool startSmash = false, isSmashing = false;
+
     void Start()
     {
         // Don't forget to update the smoothTime value when changing bpm
@@ -44,13 +46,30 @@ public class VisualBeat : MonoBehaviour
     {
         mat.SetFloat("_Size", 1);
 
-        if (mat.GetColor("_Color") == Color.red)
+        if (mat.GetFloat("_Side") == 1f)
         {
-            mat.SetColor("_Color", Color.green);
+            mat.SetFloat("_Side", -1f);
         }
         else
         {
-            mat.SetColor("_Color", Color.red);
+            mat.SetFloat("_Side", 1f);
         }
+
+        if (isSmashing)
+        {
+            mat.SetColor("_Color", Color.blue);
+            isSmashing = false;
+        }
+        if (startSmash)
+        {
+            isSmashing = true;
+            startSmash = false;
+        }
+    }
+
+    public void ShowSmashing()
+    {
+        mat.SetColor("_Color", Color.red);
+        startSmash = true;
     }
 }

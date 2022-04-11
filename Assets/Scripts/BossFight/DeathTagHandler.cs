@@ -53,8 +53,6 @@ public class DeathTagHandler : MonoBehaviour
 
         if (data != "")
         {
-            Debug.Log(data);
-
             string[] splittedData = data.Split('|');
 
             foreach (string s in splittedData)

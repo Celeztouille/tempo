@@ -22,6 +22,22 @@
                     "interactions": ""
                 },
                 {
+                    "name": "HitLeft",
+                    "type": "Button",
+                    "id": "8779de1e-7f4e-4bf1-ae98-a662d0f88aa8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "HitRight",
+                    "type": "Button",
+                    "id": "c664c909-c2cd-43d7-a8ba-54fed9011801",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "a9760e63-d86a-4bc9-b6f4-691569f245b9",
@@ -262,6 +278,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Debug0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9fdc2fe0-7346-4068-8a53-d1529c71be87",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "HitLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c223eed8-543f-44f2-9665-10b185ea7e03",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "HitRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
