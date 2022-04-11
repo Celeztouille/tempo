@@ -3,7 +3,12 @@ guid: ae551b704125c994db0738ea4bf355bd
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Obstacles Lose life
+    second: {fileID: 2100000, guid: 9c3c3bc03e42a6b4ea0a7695eb5fdf20, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
