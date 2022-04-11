@@ -41,7 +41,7 @@ public class MoveCamera : MonoBehaviour
     }
 
     // Set target position
-    private void Move(int i)
+    public void Move(int i)
     {
         if (i >= camPoints.Count)
         {
