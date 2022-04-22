@@ -48,6 +48,11 @@ public class Score : MonoBehaviour
         DisplayScore();
     }
 
+    public static int GetMultiplier()
+    {
+        return multiplier;
+    }
+
     // Toggle to increment the multiplier by a certain amount (default = 1)
     public static void IncrementMultiplier(int value = 1)
     {
