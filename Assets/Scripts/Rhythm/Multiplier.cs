@@ -60,6 +60,9 @@ public class Multiplier : MonoBehaviour
     // Script containing the player actions to trigger (jump, fire, parry)
     private PlayerActions playerAction;
 
+    // if true : player must input steps, if false : steps are automatic
+    [HideInInspector] public static bool needSteps = true;
+
     public enum StepState
     {
         Left,
@@ -238,23 +241,26 @@ public class Multiplier : MonoBehaviour
         }
         if (timer > 0.05f)
         {
-            if (hitLeft)
+            if (hitLeft && needSteps)
                 Step(StepState.Left, false);
-            if (hitRight)
+            if (hitRight && needSteps)
                 Step(StepState.Right, false);
             hitLeft = false;
             hitRight = false;
 
         }
 
-        if (Time.fixedTime > timeInput + InternalClock.GetPeriod() * fullBeatWindowCoeff)
+        if (needSteps)
         {
-            timeInput += InternalClock.GetPeriod(); // Update timeInput to get the timestamp of the missed beat (which is the last beat)
-            Miss();
+            if (Time.fixedTime > timeInput + InternalClock.GetPeriod() * fullBeatWindowCoeff)
+            {
+                timeInput += InternalClock.GetPeriod(); // Update timeInput to get the timestamp of the missed beat (which is the last beat)
+                Miss();
 
-            // DEBUG Update BPM Display
-            debugText.GetComponent<TextMeshProUGUI>().text = InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString();
-            // DEBUG
+                // DEBUG Update BPM Display
+                debugText.GetComponent<TextMeshProUGUI>().text = InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString();
+                // DEBUG
+            }
         }
 
         timer += Time.deltaTime;
