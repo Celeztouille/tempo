@@ -45,15 +45,12 @@ public class PlayerActions : MonoBehaviour
         jumpTickCount = jumpDuration + 1;
 
         goalPos = transform.position;
-
-        debugSphere = GameObject.Find("DebugSphere").transform;
     }
 
     private void Start() => InternalClock.tickEvent.AddListener(TickUpdate);
 
     private void Update()
     {
-        debugSphere.position = goalPos;
         if (goalPos.y >= transform.position.y)
         {
             transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref refVelocity, smoothTime);
