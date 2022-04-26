@@ -2,23 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectWalls : MonoBehaviour
+public class MoveAvatar : MonoBehaviour
 {
     [HideInInspector] public static bool isBehindGlass = false;
     [HideInInspector] public static GameObject glassObject = null;
+
+    private PlayerActions playerAction;
+    private MoveCameraManager moveCameraManager;
 
     // Reference to visual beat script
     private VisualBeat visualBeat;
 
     private void Start()
     {
+        playerAction = GameObject.Find("Avatar").GetComponent<PlayerActions>();
+        moveCameraManager = GameObject.Find("Camera Manager").GetComponent<MoveCameraManager>();
         visualBeat = GameObject.Find("VisualBeat").GetComponent<VisualBeat>();
+
+        InternalClock.beatEvent.AddListener(BeatUpdate);
     }
 
+    private void BeatUpdate()
+    {
+        // Detect if player is facing a wall before moving it
+        if (DetectWall())
+        {
+            Debug.Log("MUR");
+            //FightHandler.ToggleScroll(false);
+            Multiplier.freezeMultiplier = true;
+            Score.SetMultiplier(1);
+            Music.ResetBPM();
+        }
+        else
+        {
+            Debug.Log("PAMUR");
+            playerAction.SmoothMove(FightHandler.globalSpeed, 0);
+            moveCameraManager.SmoothMove(FightHandler.globalSpeed, 0);
+        }
+    }
 
     // Detect if player is stuck behind a solid wall
-    // This function is subscribed to the beatEvent via the MovingItem script (to ensure it is called BEFORE moving items)
-    public void DetectWall()
+    public bool DetectWall()
     {
         Ray ray = new Ray(transform.position, Vector3.right);
 
@@ -27,7 +51,6 @@ public class DetectWalls : MonoBehaviour
         // Check if is the player is right behind a wall
         Physics.Raycast(ray, out RaycastHit hit, (FightHandler.globalSpeed * FightHandler.gwidth) / (float)FightHandler.gridxstep, LayerMask.GetMask("Solid"));
 
-        
         if (hit.collider != null)
         {
             if (hit.collider.tag == "Glass")
@@ -35,20 +58,20 @@ public class DetectWalls : MonoBehaviour
                 isBehindGlass = true;
                 glassObject = hit.collider.gameObject;
             }
-            // If player is stuck, stop global scroll and freeze points, multiplier and stuff
             else
             {
-                FightHandler.ToggleScroll(false);
-                Multiplier.freezeMultiplier = true;
-                Score.SetMultiplier(1);
-                Music.ResetBPM();
+                return true;
             }
         }
-        // Reset glass detection tags
         else
         {
+            // Reset glass detection tags
             isBehindGlass = false;
             glassObject = null;
+
+            // Reactivate scroll and multiplier
+            //FightHandler.ToggleScroll(true);
+            Multiplier.freezeMultiplier = false;
         }
 
 
@@ -56,10 +79,9 @@ public class DetectWalls : MonoBehaviour
         Physics.Raycast(ray, out hit, 2f * (FightHandler.globalSpeed * FightHandler.gwidth) / (float)FightHandler.gridxstep, LayerMask.GetMask("Solid"));
         if (hit.collider != null && hit.collider.tag == "Glass")
         {
-            Debug.Log("bouh");
             visualBeat.ShowSmashing();
         }
 
-        // Scroll and stuff is reactivated when player is jumping
+        return false;
     }
 }

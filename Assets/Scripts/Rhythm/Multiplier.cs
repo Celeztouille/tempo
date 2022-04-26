@@ -160,7 +160,7 @@ public class Multiplier : MonoBehaviour
             else if (step == StepState.Left && InternalClock.beatsCount % 2 == 1)
             {
                 // If we don't hit and there's no glass OR if we hit and there's glass : pass
-                if (DetectWalls.isBehindGlass == hitGlass)
+                if (MoveAvatar.isBehindGlass == hitGlass)
                 {
                     UpdateScoreMultAndBPM(delta);
 
@@ -168,10 +168,10 @@ public class Multiplier : MonoBehaviour
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/TopKick");
 
                     // Destroy glass gameObject if we hit glass
-                    if (DetectWalls.isBehindGlass)
+                    if (MoveAvatar.isBehindGlass)
                     {
                         Debug.Log("SMASH");
-                        Destroy(DetectWalls.glassObject);
+                        Destroy(MoveAvatar.glassObject);
                     }
                 }
                 // If we hit and there's no glass or if we don't hit and there's glass : miss
@@ -185,7 +185,7 @@ public class Multiplier : MonoBehaviour
             else if (step == StepState.Right && InternalClock.beatsCount % 2 == 0)
             {
                 // If we don't hit and there's no glass OR if we hit and there's glass : pass
-                if (DetectWalls.isBehindGlass == hitGlass)
+                if (MoveAvatar.isBehindGlass == hitGlass)
                 {
                     UpdateScoreMultAndBPM(delta);
 
@@ -193,10 +193,10 @@ public class Multiplier : MonoBehaviour
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Snare");
 
                     // Destroy glass gameObject if we hit glass
-                    if (DetectWalls.isBehindGlass)
+                    if (MoveAvatar.isBehindGlass)
                     {
                         Debug.Log("SMASH");
-                        Destroy(DetectWalls.glassObject);
+                        Destroy(MoveAvatar.glassObject);
                     }
                 }
                 // If we hit and there's no glass or if we don't hit and there's glass : miss
@@ -205,9 +205,9 @@ public class Multiplier : MonoBehaviour
                     Miss();
 
                     // Destroy glass gameObject when passing through
-                    if (DetectWalls.isBehindGlass)
+                    if (MoveAvatar.isBehindGlass)
                     {
-                        Destroy(DetectWalls.glassObject);
+                        Destroy(MoveAvatar.glassObject);
                     }
                 }
             }
@@ -288,9 +288,9 @@ public class Multiplier : MonoBehaviour
             else
             {
                 // If we are behind glass : step through the glass and break it
-                if (DetectWalls.isBehindGlass)
+                if (MoveAvatar.isBehindGlass)
                 {
-                    Destroy(DetectWalls.glassObject);
+                    Destroy(MoveAvatar.glassObject);
                 }
             }
 
@@ -307,9 +307,9 @@ public class Multiplier : MonoBehaviour
             else
             {
                 // If we are behind glass : step through the glass and break it
-                if (DetectWalls.isBehindGlass)
+                if (MoveAvatar.isBehindGlass)
                 {
-                    Destroy(DetectWalls.glassObject);
+                    Destroy(MoveAvatar.glassObject);
                 }
             }
         }
