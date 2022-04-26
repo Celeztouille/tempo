@@ -35,6 +35,9 @@ public class PlayerActions : MonoBehaviour
     // To check if player is on the ground or not
     private bool isGrounded = true;
 
+    //DEBUG
+    Transform debugSphere;
+
     // Initialise tick counters at <duration>+1 :
     // trigger will set counter at 0 and counter will trigger consequent event at <duration>
     private void Awake()
@@ -42,12 +45,15 @@ public class PlayerActions : MonoBehaviour
         jumpTickCount = jumpDuration + 1;
 
         goalPos = transform.position;
+
+        debugSphere = GameObject.Find("DebugSphere").transform;
     }
 
     private void Start() => InternalClock.tickEvent.AddListener(TickUpdate);
 
     private void Update()
     {
+        debugSphere.position = goalPos;
         if (goalPos.y >= transform.position.y)
         {
             transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref refVelocity, smoothTime);
@@ -84,10 +90,6 @@ public class PlayerActions : MonoBehaviour
                 isJumping = true;
                 isGrounded = false;
                 jumpTickCount = 0;
-
-                // Reactivate scroll and multiplier when jumping (we need to do that if the player is stuck behind a wall)
-                FightHandler.ToggleScroll(true);
-                Multiplier.freezeMultiplier = false;
             }
             // If platform -> jump until reaching the ceiling
             else
@@ -101,8 +103,6 @@ public class PlayerActions : MonoBehaviour
                     isJumping = true;
                     isGrounded = false;
                     jumpTickCount = 0;
-                    FightHandler.ToggleScroll(true);
-                    Multiplier.freezeMultiplier = false;
                 }
             }
 
@@ -133,7 +133,7 @@ public class PlayerActions : MonoBehaviour
     public void SmoothMove(int x, int y)
     {
         // Update the goal position of the object
-        goalPos = transform.position + new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
+        goalPos += new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
                                                    y * (FightHandler.gheight / (float)FightHandler.gridystep),
                                                    0f);
         goalPos = BossGrid.SnapToGrid(goalPos);
@@ -148,7 +148,6 @@ public class PlayerActions : MonoBehaviour
 
             Ray ray = new Ray(transform.position, Vector3.down);
             RaycastHit hit;
-            UnityEngine.Debug.DrawRay(transform.position, Vector3.down * FightHandler.gheight, Color.yellow, 1f);
 
             // Check if is there is a platform below
             Physics.Raycast(ray, out hit, (fallSpeed * FightHandler.gheight) / (float)FightHandler.gridystep, LayerMask.GetMask("Solid"));
@@ -157,8 +156,6 @@ public class PlayerActions : MonoBehaviour
             {
                 SmoothMove(0, -fallSpeed);
 
-                // Reactivate scroll and multiplier when falling (we need to do that if the player is stuck behind a wall)
-                FightHandler.ToggleScroll(true);
 
                 return true; // Object is still falling -> we return true
             }
@@ -172,8 +169,6 @@ public class PlayerActions : MonoBehaviour
                 {
                     SmoothMove(0, -stepsDown);
 
-                    // Reactivate scroll and multiplier when falling (we need to do that if the player is stuck behind a wall)
-                    FightHandler.ToggleScroll(true);
                 }
                 return false;
             }

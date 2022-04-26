@@ -25,7 +25,7 @@ public class BossGrid
         // Third option : clamp the movement to stick at the bound of the grid
         if (allowOutOfBounds == OutOfBounds.Destroy)
         {
-            if (tr.position.y > FightHandler.gheight || tr.position.x > FightHandler.gwidth || tr.position.x < 0 || tr.position.y < 0)
+            if (tr.position.y > FightHandler.gheight || tr.position.x < 0 || tr.position.y < 0)
             {
                 MonoBehaviour.Destroy(tr.gameObject);
             }
@@ -33,7 +33,7 @@ public class BossGrid
 
         if (allowOutOfBounds == OutOfBounds.DestroyAfter)
         {
-            if (tr.position.y > FightHandler.gheight + 10f || tr.position.x > FightHandler.gwidth + 10f || tr.position.x < -10f || tr.position.y < -10f)
+            if (tr.position.y > FightHandler.gheight + 10f || tr.position.x < -10f || tr.position.y < -10f)
             {
                 MonoBehaviour.Destroy(tr.gameObject);
             }
@@ -44,11 +44,6 @@ public class BossGrid
             if (tr.position.y > FightHandler.gheight)
             {
                 tr.position = new Vector3(tr.position.x, FightHandler.gheight, tr.position.z);
-                return tr.position;
-            }
-            if (tr.position.x > FightHandler.gwidth)
-            {
-                tr.position = new Vector3(FightHandler.gwidth, tr.position.y, tr.position.z);
                 return tr.position;
             }
             if (tr.position.y < 0)
@@ -97,9 +92,6 @@ public class BossGrid
             {
                 Move(tr, 0, -fallSpeed, OutOfBounds.Clamp);
 
-                // Reactivate scroll and multiplier when falling (we need to do that if the player is stuck behind a wall)
-                FightHandler.ToggleScroll(true);
-
                 return true; // Object is still falling -> we return true
             }
 
@@ -112,9 +104,6 @@ public class BossGrid
                 if (stepsDown > 0)
                 {
                     Move(tr, 0, -stepsDown);
-
-                    // Reactivate scroll and multiplier when falling (we need to do that if the player is stuck behind a wall)
-                    FightHandler.ToggleScroll(true);
                 }
                 return false; // Object is now grounded -> we return false
             }
