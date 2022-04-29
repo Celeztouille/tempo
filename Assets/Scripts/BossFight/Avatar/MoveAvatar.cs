@@ -27,7 +27,6 @@ public class MoveAvatar : MonoBehaviour
         // Detect if player is facing a wall before moving it
         if (DetectWall())
         {
-            Debug.Log("MUR");
             //FightHandler.ToggleScroll(false);
             Multiplier.freezeMultiplier = true;
             Score.SetMultiplier(1);
@@ -35,7 +34,6 @@ public class MoveAvatar : MonoBehaviour
         }
         else
         {
-            Debug.Log("PAMUR");
             playerAction.SmoothMove(FightHandler.globalSpeed, 0);
             moveCameraManager.SmoothMove(FightHandler.globalSpeed, 0);
         }

@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 6510385957364636213}
   - component: {fileID: 6510385957364636212}
   - component: {fileID: 6510385957364636215}
-  - component: {fileID: 6510385957364636216}
   m_Layer: 0
-  m_Name: Chronosphere 1
+  m_Name: Chronosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,15 +109,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeSaved: 5
---- !u!114 &6510385957364636216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6510385957364636214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bdf59c765fd20a43842a4bc04f5c372, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
