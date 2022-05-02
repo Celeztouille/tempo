@@ -4,46 +4,55 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Absolute speed of the projectile (non relative to auto-scroll speed)
-    [SerializeField] [Range(1, 5)] private int speed;
 
-    // Number of ticks before projectile is destructed
-    [SerializeField] [Range(10, 100)] private int lifetime;
+    [SerializeField] [Range(1, 3)] private int speed = 1;
+    [SerializeField] [Range(10, 100)] private int lifetime = 30;
 
-    // Local tick counter
-    private int tickCount = 0;
+    [SerializeField] [Range(0f, 1f)] private float smoothTime = 0.2f;
 
-    void Start() => InternalClock.tickEvent.AddListener(TickUpdate);
+    // Used for smoothing movements
+    private Vector3 goalPos;
+    private Vector3 refVelocity;
 
-    // Move projectile on each tick and destroy it when lifetime reached
-    void TickUpdate()
+    private int beatCpt = 0;
+
+    void Start()
     {
-        BossGrid.Move(transform, speed, 0);
-        CheckIfKilledEnemy();
+        InternalClock.beatEvent.AddListener(BeatUpdate);
+        goalPos = transform.position;
+    }
 
-        if (tickCount > lifetime)
+    void BeatUpdate()
+    {
+        if (beatCpt > lifetime)
         {
             Destroy(gameObject);
         }
-        tickCount++;
+
+        SmoothMove(FightHandler.globalSpeed + speed, 0);
+        beatCpt++;
     }
 
-
-    // Kill enemy when projectile is colliding with one
-    // Because every movement is discrete, it is possible that the collision do not occur at all
-    // It is logically impossible for a projectile to be behind an enemy,
-    // if it's the case, it means that the projectile has hit the enemy
-    // so it will be our condition to check collision
-    private void CheckIfKilledEnemy()
+    void SmoothMove(int x, int y)
     {
-        Ray ray = new Ray(transform.position, Vector3.left);
-        RaycastHit hit;
+        // Update the goal position of the object
+        goalPos += new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
+                               y * (FightHandler.gheight / (float)FightHandler.gridystep),
+                               0f);
+        goalPos = BossGrid.SnapToGrid(goalPos);
+    }
 
-        Physics.Raycast(ray, out hit, FightHandler.gwidth, LayerMask.GetMask("Enemy"));
+    private void Update()
+    {
+        transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref refVelocity, smoothTime);
+    }
 
-        if (hit.collider != null)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
         {
-            Destroy(hit.collider.gameObject);
+            Score.SetMultiplier(1);
+            Music.ResetBPM();
             Destroy(gameObject);
         }
     }

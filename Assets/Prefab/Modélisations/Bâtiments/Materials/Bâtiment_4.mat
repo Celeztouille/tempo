@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: "B\xE2timent_4"
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: b330985decc3a2041959c1b1a8d058dd, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 033f882e492d0ad47b5c4ce8b128ada4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -67,6 +67,10 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _RimLightBlend: 0
+    - _RimLightSize: 0.385
+    - _ShadowBlend: 0.013
+    - _ShadowSize: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -75,4 +79,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.9063317, g: 0.4533673, b: 0.5229051, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 0.1460929, g: 0.4622642, b: 0.4558117, a: 1}
+    - _ShadowColor: {r: 0.1766846, g: 0.1613119, b: 0.2358491, a: 1}
   m_BuildTextureStacks: []

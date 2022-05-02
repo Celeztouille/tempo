@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4076550825391935603}
   - component: {fileID: 4076550825391935600}
   - component: {fileID: 4076550825391935606}
-  - component: {fileID: 4076550825391935607}
   - component: {fileID: 4076550825391935604}
   m_Layer: 0
   m_Name: ChangeCamZone
@@ -55,18 +54,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4076550825391935607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4076550825391935605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bdf59c765fd20a43842a4bc04f5c372, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4076550825391935604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,4 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b33e8eb395e80240bd6c3c4889edb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neededMultiplier: 2
+  stepsRight: 1
   camPosition: 1
