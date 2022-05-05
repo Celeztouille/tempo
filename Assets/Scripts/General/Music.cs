@@ -14,8 +14,11 @@ public class Music : MonoBehaviour
     // Internal counter
     private static int semiToneParemeter = 0;
 
+    // Keep track of the fever level to update the music
+    private static int feverLevel = 0;
+
     // Init FMOD event
-    void Start() => event_fmod = FMODUnity.RuntimeManager.CreateInstance("event:/Rhythm/LevelMusic");
+    void Start() => event_fmod = FMODUnity.RuntimeManager.CreateInstance("event:/Rhythm/LevelMusicv2");
 
     // Toggle to start the music
     public static void StartMusic() => event_fmod.start();
@@ -50,5 +53,18 @@ public class Music : MonoBehaviour
         event_fmod.setParameterByName("BPMChangeDiscrete", 0);
         semiToneParemeter = 0;
         InternalClock.ResetPeriod();
+    }
+
+    // Change music by fever
+    public static void ResetFever()
+    {
+        event_fmod.setParameterByName("FeverStateChange", 0);
+    }
+
+    // Change music by fever
+    public static void IncrementFever()
+    {
+        feverLevel++;
+        event_fmod.setParameterByName("FeverStateChange", feverLevel);
     }
 }
