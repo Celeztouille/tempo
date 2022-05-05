@@ -66,4 +66,9 @@ public class FightHandler : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        Debug.Log(globalSpeed);
+    }
+
 }
