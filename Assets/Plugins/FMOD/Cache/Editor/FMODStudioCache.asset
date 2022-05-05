@@ -441,6 +441,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &-4346363605523109770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Rhythm/Snare
+  m_EditorClassIdentifier: 
+  Path: event:/Rhythm/Snare
+  Guid:
+    Data1: -494456423
+    Data2: 1283738989
+    Data3: 1463792526
+    Data4: 567197949
+  Banks:
+  - {fileID: -2393494113861099817}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
 --- !u!114 &-4273078300140853040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +640,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3537637024313680138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Step2
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Step2
+  Guid:
+    Data1: -1261152757
+    Data2: 1324835394
+    Data3: -1176388169
+    Data4: 928776902
+  Banks:
+  - {fileID: -2393494113861099817}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 175
 --- !u!114 &-3392641739167500535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,6 +715,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3213443053605786178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Step1
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Step1
+  Guid:
+    Data1: 1288958486
+    Data2: 1141536509
+    Data3: -41442378
+    Data4: 1432781139
+  Banks:
+  - {fileID: -2393494113861099817}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 175
 --- !u!114 &-3052078137181043507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +888,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &-2574767285541482923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: 
+  Guid:
+    Data1: 1288958486
+    Data2: 1141536509
+    Data3: -41442378
+    Data4: 1432781139
+  Banks:
+  - {fileID: -2393494113861099817}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 175
 --- !u!114 &-2393494113861099817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,10 +930,10 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637870987995720513
+  lastModified: 637873458066812410
   FileSizes:
   - Name: Desktop
-    Value: 129216
+    Value: 1344640
   Exists: 1
 --- !u!114 &-2356848491216779661
 MonoBehaviour:
@@ -877,6 +985,30 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-1924966750558456069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusic/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -967,12 +1099,36 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637852744930834882
+  lastModified: 637873458067166400
   FileSizes:
   - Name: Desktop
-    Value: 1188
+    Value: 1238
   Exists: 1
 --- !u!114 &-1275693532976216432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusic/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-971585149439685954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1047,6 +1203,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 550
+--- !u!114 &-663051337414394756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Rhythm/Topkick
+  m_EditorClassIdentifier: 
+  Path: event:/Rhythm/Topkick
+  Guid:
+    Data1: -1571654222
+    Data2: 1230709709
+    Data3: 808470671
+    Data4: 1117609972
+  Banks:
+  - {fileID: -2393494113861099817}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 116
 --- !u!114 &-606279991065004880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,15 +1392,19 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: 3265185188305713870}
   - {fileID: -789535682445153490}
-  - {fileID: 4643286768231036936}
   - {fileID: 3084278479159780056}
-  - {fileID: -4273078300140853040}
+  - {fileID: -2574767285541482923}
+  - {fileID: -3537637024313680138}
+  - {fileID: -3213443053605786178}
+  - {fileID: 7745437945776457361}
+  - {fileID: -4346363605523109770}
+  - {fileID: -663051337414394756}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2393494113861099817}
   StringsBanks:
   - {fileID: -1518153573516385460}
-  cacheTime: 637870987995720513
+  cacheTime: 637873458067166400
   cacheVersion: 9
 --- !u!114 &95933374650931741
 MonoBehaviour:
@@ -1590,7 +1777,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 184
+  Length: 986
 --- !u!114 &3276514094084451448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,17 +1988,40 @@ MonoBehaviour:
     Data2: 1182313223
     Data3: -2106454897
     Data4: 1910965678
-  Banks:
-  - {fileID: -2393494113861099817}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 2363152307952263541}
-  - {fileID: 4473064486589847610}
+  - {fileID: -971585149439685954}
+  - {fileID: -1924966750558456069}
   MinDistance: 1
   MaxDistance: 20
   Length: 7441
+--- !u!114 &4712236304212865201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &4973362737569038843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2052,6 +2262,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &6927080892335378662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/FeverStateChange
+  m_EditorClassIdentifier: 
+  Name: FeverStateChange
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6955442472834718118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2148,6 +2382,36 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &7745437945776457361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Rhythm/LevelMusicv2
+  m_EditorClassIdentifier: 
+  Path: event:/Rhythm/LevelMusicv2
+  Guid:
+    Data1: 1320264256
+    Data2: 1200306380
+    Data3: -1857834826
+    Data4: -1935065905
+  Banks:
+  - {fileID: -2393494113861099817}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 8703723278580768255}
+  - {fileID: 4712236304212865201}
+  - {fileID: 6927080892335378662}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 16744
 --- !u!114 &7879123256376015795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2217,6 +2481,30 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &8703723278580768255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
   IsGlobal: 0
   Labels: []
   Exists: 1
