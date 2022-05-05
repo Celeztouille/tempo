@@ -110,6 +110,7 @@ public class Multiplier : MonoBehaviour
                 if (perfCpt >= perfectForMult)
                 {
                     Score.IncrementMultiplier();
+                    Music.IncrementFever();
                     perfCpt = 0;
                 }
             }
@@ -270,6 +271,7 @@ public class Multiplier : MonoBehaviour
     private void Miss()
     {
         Score.SetMultiplier(1); // Reset multiplier
+        Music.ResetFever();
         Music.ResetBPM();       // Reset BPM
         perfCpt = 0;            // Reset internal counters
         speedUpCpt = 0;
