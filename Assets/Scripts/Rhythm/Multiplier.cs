@@ -98,13 +98,21 @@ public class Multiplier : MonoBehaviour
             }
 
             // Check if it was perfect or good and add points consequently
-            if (Mathf.Abs(delta) < perfectWdw)
+            if (Mathf.Abs(delta) < goodWdw)
             {
                 Score.AddToScore(scorePerfectStep);
                 perfCpt++;
 
                 // UI Feedback
-                hitFeedback.SetHitFeedback(HitFeedback.Precision.Perfect);
+                if (Mathf.Abs(delta) < perfectWdw)
+                {
+                    hitFeedback.SetHitFeedback(HitFeedback.Precision.Perfect);
+                }
+                else
+                {
+                    hitFeedback.SetHitFeedback(HitFeedback.Precision.Good);
+                }
+                      
 
                 // If we made <perfectForMult> perfect kicks in a row : add 1 to multiplier
                 if (perfCpt >= perfectForMult)
@@ -114,15 +122,6 @@ public class Multiplier : MonoBehaviour
                     perfCpt = 0;
                 }
             }
-            else
-            {
-                Score.AddToScore(scoreGoodStep);
-                perfCpt = 0;
-
-                // UI Feedback
-                hitFeedback.SetHitFeedback(HitFeedback.Precision.Good);
-            }
-
             // Last beat wasn't missed
             lastMissed = false;
         }
