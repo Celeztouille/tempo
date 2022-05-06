@@ -10,13 +10,13 @@ public class FightHandler : MonoBehaviour
     [SerializeField] [Range(0, 500)] private int horizontalGridStep;
 
     // Number of steps on the y-axis
-    [SerializeField] [Range(0, 50)] private int verticalGridStep;
+    [SerializeField] [Range(0, 200)] private int verticalGridStep;
 
     // Global width of the grid
     [SerializeField] [Range(20, 200)] private int gridWidth;
 
     // Global height of the grid
-    [SerializeField] [Range(10, 100)] private int gridHeight;
+    [SerializeField] [Range(10, 1000)] private int gridHeight;
 
     // Speed of the auto-scroll
     [SerializeField] [Range(1, 10)] private int scrollSpeed;
