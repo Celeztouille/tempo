@@ -19227,6 +19227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTime: 0.2
+  avatar: {fileID: 1586737953}
 --- !u!1 &1586737953
 GameObject:
   m_ObjectHideFlags: 0
