@@ -22,7 +22,7 @@ public class Multiplier : MonoBehaviour
     [SerializeField] private int scoreGoodStep = 50;
 
     // Needed perfects in a row to step up the multiplier
-    [SerializeField] private int perfectForMult = 10;
+    [SerializeField] private int perfectForMult = 5;
 
     // Needed perfects/goods in a row to speed up the music and clock
     [SerializeField] private int beatsPerSpeedUp = 5;
@@ -42,6 +42,9 @@ public class Multiplier : MonoBehaviour
     // Internal counters
     private int perfCpt = 0;
     private int speedUpCpt = 0;
+
+    // DEBUG
+    private bool toggleMiss = false;
 
     // Multiplier, acceleration and points are freezed when player is stuck behind a wall (to prevent grinding)
     [HideInInspector] public static bool freezeMultiplier = false;
@@ -269,11 +272,15 @@ public class Multiplier : MonoBehaviour
     // What we need to do when we miss a beat
     private void Miss()
     {
-        Score.SetMultiplier(1); // Reset multiplier
-        Music.ResetFever();
-        Music.ResetBPM();       // Reset BPM
-        perfCpt = 0;            // Reset internal counters
-        speedUpCpt = 0;
+        if (toggleMiss)
+        {
+            Score.SetMultiplier(1); // Reset multiplier
+            Music.ResetFever();
+            Music.ResetBPM();       // Reset BPM
+            perfCpt = 0;            // Reset internal counters
+            speedUpCpt = 0;
+        }
+
 
         // UI Feedback
         hitFeedback.SetHitFeedback(HitFeedback.Precision.Miss);
@@ -341,6 +348,10 @@ public class Multiplier : MonoBehaviour
             if (context.action.name == "HitRight")
             {
                 Step(StepState.Right, true);
+            }
+            if (context.action.name == "Debug2")
+            {
+                toggleMiss = true;
             }
         }
 

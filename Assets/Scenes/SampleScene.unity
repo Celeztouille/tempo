@@ -3087,7 +3087,7 @@ MonoBehaviour:
   fullBeatWindowCoeff: 1.2
   scorePerfectStep: 100
   scoreGoodStep: 50
-  perfectForMult: 10
+  perfectForMult: 5
   beatsPerSpeedUp: 4
   firstMissBackChance: 0.1
   missBackChance: 0.05
@@ -24244,8 +24244,8 @@ MonoBehaviour:
     m_ActionName: Player Input/Debug1[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 384159195}
-        m_TargetAssemblyTypeName: MoveCamera, Assembly-CSharp
+      - m_Target: {fileID: 317029442}
+        m_TargetAssemblyTypeName: Multiplier, Assembly-CSharp
         m_MethodName: InputPressed
         m_Mode: 0
         m_Arguments:
