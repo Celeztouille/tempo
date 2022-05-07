@@ -173,6 +173,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &-7751316273681899593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/FeverStateChange
+  m_EditorClassIdentifier: 
+  Name: FeverStateChange
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-7585699048550941565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +612,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &-5031676573533266303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Rhythm/Intro
+  m_EditorClassIdentifier: 
+  Path: event:/Rhythm/Intro
+  Guid:
+    Data1: 1617142441
+    Data2: 1329897056
+    Data3: 1534734250
+    Data4: 1600065408
+  Banks:
+  - {fileID: -2393494113861099817}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14883
 --- !u!114 &-4844963636961856788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,6 +1005,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3258062353880955420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-3052078137181043507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1139,10 +1214,10 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637875157739539840
+  lastModified: 637875532482948742
   FileSizes:
   - Name: Desktop
-    Value: 1344640
+    Value: 1545888
   Exists: 1
 --- !u!114 &-2356848491216779661
 MonoBehaviour:
@@ -1335,10 +1410,10 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637875157739570885
+  lastModified: 637875532482998588
   FileSizes:
   - Name: Desktop
-    Value: 1238
+    Value: 1274
   Exists: 1
 --- !u!114 &-1275693532976216432
 MonoBehaviour:
@@ -1583,12 +1658,13 @@ MonoBehaviour:
   - {fileID: 4892933999441159919}
   - {fileID: -8692866875387270940}
   - {fileID: 860218712613040965}
+  - {fileID: -5031676573533266303}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2393494113861099817}
   StringsBanks:
   - {fileID: -1518153573516385460}
-  cacheTime: 637875157739570885
+  cacheTime: 637875532482998588
   cacheVersion: 9
 --- !u!114 &1777987072598673
 MonoBehaviour:
@@ -1659,6 +1735,30 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &434135875898359727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -2033,7 +2133,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2710
+  Length: 744
 --- !u!114 &3265185188305713870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2060,7 +2160,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 986
+  Length: 115
 --- !u!114 &3276514094084451448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2329,9 +2429,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -5117400296518131662}
-  - {fileID: 1005893420151377089}
-  - {fileID: -5988160663427530934}
+  - {fileID: -3258062353880955420}
+  - {fileID: 434135875898359727}
+  - {fileID: -7751316273681899593}
   MinDistance: 1
   MaxDistance: 20
   Length: 16744

@@ -19,6 +19,7 @@ public class StartRhythm : MonoBehaviour
     void Awake()
     {
         readyText = GameObject.Find("Ready 321").GetComponent<TextMeshProUGUI>();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Intro");
     }
 
     private void Update()
@@ -61,5 +62,7 @@ public class StartRhythm : MonoBehaviour
 
         readyText.transform.gameObject.SetActive(true);
         readyText.text = "Ready ?";
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Intro");
     }
 }
