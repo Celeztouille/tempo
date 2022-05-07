@@ -64,7 +64,11 @@ public class Music : MonoBehaviour
     // Change music by fever
     public static void IncrementFever()
     {
-        feverLevel++;
-        event_fmod.setParameterByName("FeverStateChange", feverLevel);
+        if (feverLevel < 4)
+        {
+            feverLevel++;
+            event_fmod.setParameterByName("FeverStateChange", feverLevel);
+        }
+
     }
 }

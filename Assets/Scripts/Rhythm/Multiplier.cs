@@ -144,7 +144,7 @@ public class Multiplier : MonoBehaviour
         }
 
         // DEBUG Show current BPM
-        debugText.GetComponent<TextMeshProUGUI>().text = ((int)InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin)).ToString();
+        //debugText.GetComponent<TextMeshProUGUI>().text = ((int)InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin)).ToString();
         // DEBUG
 
         // if we hit and multiplier is not frozen
@@ -258,7 +258,7 @@ public class Multiplier : MonoBehaviour
                 Miss();
 
                 // DEBUG Update BPM Display
-                debugText.GetComponent<TextMeshProUGUI>().text = InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString();
+                //debugText.GetComponent<TextMeshProUGUI>().text = InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString();
                 // DEBUG
             }
         }
