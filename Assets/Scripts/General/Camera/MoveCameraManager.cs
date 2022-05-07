@@ -9,9 +9,16 @@ public class MoveCameraManager : MonoBehaviour
 
     [SerializeField] private GameObject avatar;
 
+    private Vector3 initialPos;
+
     // Used for smoothing movements
     private Vector3 goalPos;
     private Vector3 refVelocity;
+
+    private void Start()
+    {
+        initialPos = transform.position;
+    }
 
     public void SmoothMove(int x, int y)
     {
@@ -25,5 +32,10 @@ public class MoveCameraManager : MonoBehaviour
     {
         transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref refVelocity, smoothTime);
         transform.position = new Vector3(transform.position.x, avatar.transform.position.y, transform.position.z);
+    }
+
+    public void ResetCamPosition()
+    {
+        goalPos = initialPos;
     }
 }

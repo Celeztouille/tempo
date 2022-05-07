@@ -35,6 +35,8 @@ public class PlayerActions : MonoBehaviour
     // To check if player is on the ground or not
     private bool isGrounded = true;
 
+    private Vector3 initialPos;
+
     //DEBUG
     Transform debugSphere;
 
@@ -45,6 +47,7 @@ public class PlayerActions : MonoBehaviour
         jumpTickCount = jumpDuration + 1;
 
         goalPos = transform.position;
+        initialPos = transform.position;
     }
 
     private void Start() => InternalClock.tickEvent.AddListener(TickUpdate);
@@ -171,5 +174,10 @@ public class PlayerActions : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void ResetPosition()
+    {
+        goalPos = initialPos;
     }
 }

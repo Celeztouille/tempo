@@ -9,11 +9,6 @@ public class StartRhythm : MonoBehaviour
     // Has the level started ?
     public static bool start = false;
 
-    private void Awake()
-    {
-        Debug.Log(gameObject);
-    }
-
     // Input Listener : check if an input was pressed, determines which key is pressed and call HitInput()
     public void InputPressed(InputAction.CallbackContext context)
     {
@@ -25,7 +20,7 @@ public class StartRhythm : MonoBehaviour
                 InternalClock.SetPeriod(129f, InternalClock.ClockFormat.BeatsPerMin, true);
                 Music.StartMusic(); // Start track and clock
                 DisplayTimer.StartTimer(); // Start UI Timer
-                Destroy(this); // Remove this component to not interfer with further jumps
+                //Destroy(this); // Remove this component to not interfer with further jumps
             }
         }
     }

@@ -36,10 +36,9 @@ public class ChangeCamZone : MonoBehaviour
             // Gain extra life with multiplier
             if (Score.GetMultiplier() >= neededMultiplier)
             {
+                Death.lives += stepsRight;
                 BossGrid.Move(other.transform, stepsRight, 0);
             }
-
-            Destroy(gameObject);
         }
     }
 }
