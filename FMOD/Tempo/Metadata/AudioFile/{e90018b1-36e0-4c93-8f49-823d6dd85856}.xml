@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{da428585-a690-418a-8d72-504169543e1e}">
+	<object class="AudioFile" id="{e90018b1-36e0-4c93-8f49-823d6dd85856}">
 		<property name="assetPath">
-			<value>jump.wav</value>
+			<value>intro_musique.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
@@ -11,7 +14,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.26566666666666666</value>
+			<value>14.883729166666667</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{021584bb-d5b6-4d7d-9aa6-61c3ffddc5f3}</destination>
