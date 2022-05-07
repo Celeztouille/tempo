@@ -43,6 +43,11 @@ public class Multiplier : MonoBehaviour
     private int perfCpt = 0;
     private int speedUpCpt = 0;
 
+    // Steps counter
+    public static int missCpt = 0;
+    public static int goodCpt = 0;
+    public static int perfectCpt = 0;
+
     // DEBUG
     private bool toggleMiss = false;
 
@@ -110,10 +115,12 @@ public class Multiplier : MonoBehaviour
                 if (Mathf.Abs(delta) < perfectWdw)
                 {
                     hitFeedback.SetHitFeedback(HitFeedback.Precision.Perfect);
+                    perfCpt++;
                 }
                 else
                 {
                     hitFeedback.SetHitFeedback(HitFeedback.Precision.Good);
+                    goodCpt++;
                 }
                       
 
@@ -174,7 +181,8 @@ public class Multiplier : MonoBehaviour
                     if (MoveAvatar.isBehindGlass)
                     {
                         Debug.Log("SMASH");
-                        Destroy(MoveAvatar.glassObject);
+                        // Anim glass boum
+                        //Destroy(MoveAvatar.glassObject);
                     }
                 }
                 // If we hit and there's no glass or if we don't hit and there's glass : miss
@@ -199,7 +207,8 @@ public class Multiplier : MonoBehaviour
                     if (MoveAvatar.isBehindGlass)
                     {
                         Debug.Log("SMASH");
-                        Destroy(MoveAvatar.glassObject);
+                        // Anim glass boum
+                        //Destroy(MoveAvatar.glassObject);
                     }
                 }
                 // If we hit and there's no glass or if we don't hit and there's glass : miss
@@ -210,7 +219,8 @@ public class Multiplier : MonoBehaviour
                     // Destroy glass gameObject when passing through
                     if (MoveAvatar.isBehindGlass)
                     {
-                        Destroy(MoveAvatar.glassObject);
+                        // Anim glass boum
+                        //Destroy(MoveAvatar.glassObject);
                     }
                 }
             }
@@ -284,6 +294,7 @@ public class Multiplier : MonoBehaviour
 
         // UI Feedback
         hitFeedback.SetHitFeedback(HitFeedback.Precision.Miss);
+        missCpt++;
 
         // play sound effect and move player backwards if first beat missed
         if (!lastMissed)
@@ -292,13 +303,15 @@ public class Multiplier : MonoBehaviour
             if (Random.Range(0f, 1f) < firstMissBackChance)
             {
                 playerAction.SmoothMove(-1, 0);
+                Death.lives--;
             }
             else
             {
                 // If we are behind glass : step through the glass and break it
                 if (MoveAvatar.isBehindGlass)
                 {
-                    Destroy(MoveAvatar.glassObject);
+                    // Anim glass boum
+                    //Destroy(MoveAvatar.glassObject);
                 }
             }
 
@@ -311,13 +324,15 @@ public class Multiplier : MonoBehaviour
             if (Random.Range(0f, 1f) < missBackChance)
             {
                 playerAction.SmoothMove(-1, 0);
+                Death.lives--;
             }
             else
             {
                 // If we are behind glass : step through the glass and break it
                 if (MoveAvatar.isBehindGlass)
                 {
-                    Destroy(MoveAvatar.glassObject);
+                    // Anim glass boum
+                    //Destroy(MoveAvatar.glassObject);
                 }
             }
         }
@@ -353,8 +368,6 @@ public class Multiplier : MonoBehaviour
             {
                 toggleMiss = true;
             }
-        }
-
-       
+        } 
     }
 }

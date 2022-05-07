@@ -104,9 +104,6 @@ public class FlashingShader : MonoBehaviour
                     break;
             }
 
-            flashColor = new Vector3(Random.Range(0, 1), 0.8f, 1f);
-            flashRimColor = new Vector3(Random.Range(0, 1), sr, vr);
-
             currentColors[i] = flashColor;
             currentRimColors[i] = flashRimColor;
         }
@@ -137,6 +134,5 @@ public class FlashingShader : MonoBehaviour
             mats[i].SetColor(Shader.PropertyToID("_ShadowColor"), Color.HSVToRGB(h, s, v));
             mats[i].SetColor(Shader.PropertyToID("_RimColor"), Color.HSVToRGB(hr, sr, vr));
         }
-
     }
 }

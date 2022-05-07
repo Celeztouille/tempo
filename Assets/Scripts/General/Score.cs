@@ -39,6 +39,12 @@ public class Score : MonoBehaviour
         DisplayScore();
     }
 
+    public static void ResetScore()
+    {
+        score = 0;
+        DisplayScore();
+    }
+
     // Toggle to manually setup multiplier
     public static void SetMultiplier(int value)
     {
@@ -67,5 +73,10 @@ public class Score : MonoBehaviour
     {
         scoreText.text = score.ToString();
         multText.text = multiplier.ToString() + "x";
+    }
+
+    public static int GetScore()
+    {
+        return score;
     }
 }
