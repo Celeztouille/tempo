@@ -72,4 +72,12 @@ public class VisualBeat : MonoBehaviour
         mat.SetColor("_Color", Color.red);
         startSmash = true;
     }
+
+    public void SetBothSides(bool value)
+    {
+        if (value)
+            mat.SetFloat("_BothSides", 1f);
+        else
+            mat.SetFloat("_BothSides", 0f);
+    }
 }
