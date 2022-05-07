@@ -23,8 +23,30 @@ public class DeathTagHandler : MonoBehaviour
     // Add a tag on screen and save the list of tags
     public void AddTag()
     {
-        GameObject tagInstance = Instantiate(tagPrefab, avatarTr.position, Quaternion.identity, transform);
-        SaveData(tagInstance.transform);
+        Ray ray = new Ray(avatarTr.position, Vector3.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Buildings")))
+        {
+            GameObject tagInstance = Instantiate(tagPrefab, hit.point - 0.05f * Vector3.forward, Quaternion.identity, transform);
+            tagInstance.transform.localScale *= 10f;
+            SaveData(tagInstance.transform);
+        }
+        else
+        {
+            ray = new Ray(avatarTr.position, Vector3.down);
+            if (Physics.Raycast(ray, out hit, 100f))
+            {
+                GameObject tagInstance = Instantiate(tagPrefab, hit.point - 0.05f * Vector3.down, Quaternion.Euler(90f, 0f, 0f), transform);
+                tagInstance.transform.localScale = 10f * Vector3.one;
+                SaveData(tagInstance.transform);
+            }
+
+        }
+
+        
+
+        
     }
 
     // Update and save tag date when instantiating a new tag
@@ -62,7 +84,12 @@ public class DeathTagHandler : MonoBehaviour
 
                 GameObject tagInstance = Instantiate(tagPrefab, transform, false);
                 tagInstance.transform.localPosition = pos;
-                
+                tagInstance.transform.localScale = 10f * Vector3.one;
+                if (pos.z < 5f)
+                {
+                    tagInstance.transform.Rotate(90f, 0f, 0f);
+                }
+
             }
         }
     }

@@ -17,6 +17,7 @@ public class Death : MonoBehaviour
     private DeathTagHandler deathTagHandler;
     [SerializeField] private PlayerActions playerActions;
     [SerializeField] private MoveCameraManager cameraManager;
+    [SerializeField] private MoveCamera moveCamera;
 
 
     void Start()
@@ -73,9 +74,15 @@ public class Death : MonoBehaviour
                     lives = 5;
 
                     cameraManager.ResetCamPosition();
+                    moveCamera.Move(0);
                     playerActions.ResetPosition();
                     StartRhythm.ReloadRhythm();
                 }
+            }
+
+            if (context.action.name == "Debug6")
+            {
+                lives = 0;
             }
         }
     }
