@@ -21,6 +21,11 @@ public class DisplayTimer : MonoBehaviour
         timer = 0f;
     }
 
+    public static void StopTimer()
+    {
+        hasStarted = false;
+    }
+
     public static void SaveTime(float time)
     {
         timer -= time;
@@ -32,7 +37,11 @@ public class DisplayTimer : MonoBehaviour
         {
             timerText.text = timer.ToString();
         }
-
+        else
+        {
+            timerText.text = "";
+        }
+        
         timer += Time.deltaTime;
     }
 }

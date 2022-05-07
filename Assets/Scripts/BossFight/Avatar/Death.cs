@@ -12,7 +12,7 @@ public class Death : MonoBehaviour
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private TextMeshProUGUI scoreText, perfText, goodText, missText, progressText;
 
-    public static int lives = 3;
+    public static int lives = 5;
 
     private DeathTagHandler deathTagHandler;
     [SerializeField] private PlayerActions playerActions;
@@ -46,10 +46,12 @@ public class Death : MonoBehaviour
         goodText.text = Multiplier.goodCpt.ToString();
         missText.text = Multiplier.missCpt.ToString();
         progressText.text = "Progress : " + progress.ToString() + "%";
+        DisplayTimer.StopTimer();
 
         isDead = true;
 
         deathScreen.SetActive(true);
+
     }
 
     public void InputPressed(InputAction.CallbackContext context)
@@ -72,6 +74,7 @@ public class Death : MonoBehaviour
 
                     cameraManager.ResetCamPosition();
                     playerActions.ResetPosition();
+                    StartRhythm.ReloadRhythm();
                 }
             }
         }
