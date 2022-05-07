@@ -65,10 +65,4 @@ public class FightHandler : MonoBehaviour
             globalSpeed = originalScrollSpeed;
         }
     }
-
-    private void Update()
-    {
-        Debug.Log(globalSpeed);
-    }
-
 }
