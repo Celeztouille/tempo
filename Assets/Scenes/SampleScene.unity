@@ -19091,6 +19091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagPrefab: {fileID: 5914368144513740543, guid: 30f7a06ebfbe71849a9fb3aa8669ca36, type: 3}
+  altTexture: {fileID: 2800000, guid: e03347cc0a8f3024ea5999ab1933c288, type: 3}
 --- !u!4 &1436105564
 Transform:
   m_ObjectHideFlags: 0

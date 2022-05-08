@@ -8,6 +8,9 @@ public class DeathTagHandler : MonoBehaviour
     // Prefab to show
     [SerializeField] private GameObject tagPrefab;
 
+    // Alternative texture
+    [SerializeField] private Texture altTexture;
+
     private Transform avatarTr;     // Transform of the avatar
 
     // Data is stored in this format x1;y1;z1|x2;y2;z2|x3;y3;z3
@@ -30,7 +33,17 @@ public class DeathTagHandler : MonoBehaviour
         {
             GameObject tagInstance = Instantiate(tagPrefab, hit.point - 0.05f * Vector3.forward, Quaternion.identity, transform);
             tagInstance.transform.localScale *= 10f;
-            SaveData(tagInstance.transform);
+
+            // Tag texture selection
+            if (Random.Range(0f, 1f) < 0.5f)
+            {
+                tagInstance.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", altTexture);
+                SaveData(tagInstance.transform, 2);
+            }
+            else
+            {
+                SaveData(tagInstance.transform, 1);
+            }
         }
         else
         {
@@ -39,8 +52,20 @@ public class DeathTagHandler : MonoBehaviour
             {
                 GameObject tagInstance = Instantiate(tagPrefab, hit.point - 0.05f * Vector3.down, Quaternion.Euler(90f, 0f, 0f), transform);
                 tagInstance.transform.localScale = 10f * Vector3.one;
-                SaveData(tagInstance.transform);
+
+                // Tag texture selection
+                if (Random.Range(0f, 1f) < 0.5f)
+                {
+                    tagInstance.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", altTexture);
+                    SaveData(tagInstance.transform, 2);
+                }
+                else
+                {
+                    SaveData(tagInstance.transform, 1);
+                }
             }
+
+
 
         }
 
@@ -50,7 +75,7 @@ public class DeathTagHandler : MonoBehaviour
     }
 
     // Update and save tag date when instantiating a new tag
-    private void SaveData(Transform newTag)
+    private void SaveData(Transform newTag, int textureID)
     {
         if (newTag != null)
         {
@@ -58,6 +83,7 @@ public class DeathTagHandler : MonoBehaviour
             {
                 data += "|";
             }
+            data += textureID.ToString();
 
             data += newTag.localPosition.x.ToString() + ";" + newTag.localPosition.y.ToString() + ";" + newTag.localPosition.z.ToString();
             PlayerPrefs.SetString("TagsData", data);
@@ -79,7 +105,10 @@ public class DeathTagHandler : MonoBehaviour
 
             foreach (string s in splittedData)
             {
-                string[] spos = s.Split(';');
+                int textureID = s[0] - '0'; // convert char to int
+                string st = s.Remove(0, 1);
+
+                string[] spos = st.Split(';');
                 Vector3 pos = new Vector3(float.Parse(spos[0]), float.Parse(spos[1]), float.Parse(spos[2]));
 
                 GameObject tagInstance = Instantiate(tagPrefab, transform, false);
@@ -88,6 +117,10 @@ public class DeathTagHandler : MonoBehaviour
                 if (pos.z < 5f)
                 {
                     tagInstance.transform.Rotate(90f, 0f, 0f);
+                }
+                if (textureID == 2)
+                {
+                    tagInstance.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", altTexture);
                 }
 
             }
