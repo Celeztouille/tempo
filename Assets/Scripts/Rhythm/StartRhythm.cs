@@ -11,8 +11,9 @@ public class StartRhythm : MonoBehaviour
 
     // Has the level started ?
     public static bool start = false;
+    private static bool hasMusicStarted = false;
 
-    private static float timer = beatPeriod * 32f;
+    private static float timer = beatPeriod * 32f + 2f; // 2 seconds before launching music
 
     private static TextMeshProUGUI readyText;
 
@@ -25,6 +26,13 @@ public class StartRhythm : MonoBehaviour
     {
         if (!start)
         {
+            if (!hasMusicStarted && timer < beatPeriod * 32f)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Intro");
+                readyText.text = "Ready ?";
+                hasMusicStarted = true;
+            }
+
             if (timer < beatPeriod)
             {
                 readyText.text = "Go !";
@@ -56,10 +64,11 @@ public class StartRhythm : MonoBehaviour
 
     public static void ReloadRhythm()
     {
-        timer = beatPeriod * 32f;
+        timer = beatPeriod * 32f + 2f; // Reload with 2 seconds delay to sync up the music
+        hasMusicStarted = false;
         start = false;
 
         readyText.transform.gameObject.SetActive(true);
-        readyText.text = "Ready ?";
+        readyText.text = "";
     }
 }
