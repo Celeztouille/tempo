@@ -9,11 +9,14 @@ Shader "Unlit/CelShading"
         _RimLightSize ("Rim Light Size", Range(0, 1)) = 0.385 
         _RimLightBlend ("Rim Light Blend", Range(0, 1)) = 0
         _RimColor ("Rim Color", Color) = (0.1460929, 0.4622642, 0.4558117, 1)
+        _Alpha ("Alpha", Range(0, 1)) = 1
 
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque"}
+        Tags { "RenderType"="Transparent" "Queue"="Transparent"}
+
+        Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
@@ -51,6 +54,7 @@ Shader "Unlit/CelShading"
             float _RimLightSize;
             float _RimLightBlend;
             float4 _RimColor;
+            float _Alpha;
 
             Interpolators vert (MeshData v)
             {
@@ -79,7 +83,7 @@ Shader "Unlit/CelShading"
 
                 
                 float4 baseColor = tex2D(_MainTex, i.uv);
-                return float4(baseColor * celLightning, 1);
+                return float4(baseColor * celLightning, _Alpha);
             }
             ENDCG
         }
@@ -120,6 +124,7 @@ Shader "Unlit/CelShading"
             float _RimLightSize;
             float _RimLightBlend;
             float4 _RimColor;
+            float _Alpha;
 
             Interpolators vert (MeshData v)
             {
@@ -148,7 +153,7 @@ Shader "Unlit/CelShading"
 
                 
                 float4 baseColor = tex2D(_MainTex, i.uv);
-                return float4(baseColor * celLightning, 1);
+                return float4(baseColor * celLightning, _Alpha);
             }
             ENDCG
         }

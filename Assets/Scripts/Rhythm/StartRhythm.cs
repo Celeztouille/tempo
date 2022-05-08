@@ -2,27 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 // With this script, the player must input the Jump button to begin the level (and start clock, music, timers and stuff) 
 public class StartRhythm : MonoBehaviour
 {
+    private const float beatPeriod = 0.4651f;
+
     // Has the level started ?
     public static bool start = false;
+    private static bool hasMusicStarted = false;
 
+    private static float timer = beatPeriod * 32f + 2f; // 2 seconds before launching music
 
-    // Input Listener : check if an input was pressed, determines which key is pressed and call HitInput()
-    public void InputPressed(InputAction.CallbackContext context)
+    private static TextMeshProUGUI readyText;
+
+    void Awake()
     {
-        if (context.performed)  // Equivalent to Input.GetKeyDown()
+        readyText = GameObject.Find("Ready 321").GetComponent<TextMeshProUGUI>();
+    }
+
+    private void Update()
+    {
+        if (!start)
         {
-            if (context.action.name == "Jump")
+            if (!hasMusicStarted && timer < beatPeriod * 32f)
             {
-                // Set initial BPM of the track
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Rhythm/Intro");
+                readyText.text = "Ready ?";
+                hasMusicStarted = true;
+            }
+
+            if (timer < beatPeriod)
+            {
+                readyText.text = "Go !";
+            }
+            else if (timer < beatPeriod * 2f)
+            {
+                readyText.text = "1";
+            }
+            else if (timer < beatPeriod * 3f)
+            {
+                readyText.text = "2";
+            }
+            else if (timer < beatPeriod * 4f)
+            {
+                readyText.text = "3";
+            }
+
+            if (timer < 0)
+            {
                 InternalClock.SetPeriod(129f, InternalClock.ClockFormat.BeatsPerMin, true);
                 Music.StartMusic(); // Start track and clock
                 DisplayTimer.StartTimer(); // Start UI Timer
-                Destroy(this); // Remove this component to not interfer with further jumps
+                start = true;
+                readyText.transform.gameObject.SetActive(false); // Remove Text
             }
+            timer -= Time.deltaTime;
         }
+    }
+
+    public static void ReloadRhythm()
+    {
+        timer = beatPeriod * 32f + 2f; // Reload with 2 seconds delay to sync up the music
+        hasMusicStarted = false;
+        start = false;
+
+        readyText.transform.gameObject.SetActive(true);
+        readyText.text = "";
     }
 }

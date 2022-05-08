@@ -125,6 +125,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 116
+--- !u!114 &-7951038234892525656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-7805185476502542859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +173,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
---- !u!114 &-7611056215975692443
+--- !u!114 &-7751316273681899593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,12 +183,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/LevelMusicv2/BPMChange
+  m_Name: parameter:/LevelMusicv2/FeverStateChange
   m_EditorClassIdentifier: 
-  Name: BPMChange
+  Name: FeverStateChange
   StudioPath: 
   Min: 0
-  Max: 1
+  Max: 6
   Default: 0
   ID:
     data1: 0
@@ -172,7 +196,7 @@ MonoBehaviour:
   Type: 0
   IsGlobal: 0
   Labels: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-7585699048550941565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,11 +413,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
-<<<<<<< HEAD
---- !u!114 &-5646061883017803883
-=======
---- !u!114 &-5502784174987490232
->>>>>>> 082e307e11a86f445276f5050b90d49f44e3827d
+--- !u!114 &-5988160663427530934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,21 +423,60 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-<<<<<<< HEAD
   m_Name: parameter:/LevelMusicv2/FeverStateChange
   m_EditorClassIdentifier: 
   Name: FeverStateChange
   StudioPath: 
   Min: 0
   Max: 6
-=======
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-5884121785350231539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-5502784174987490232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/LevelMusicv2/BPMChange
   m_EditorClassIdentifier: 
   Name: BPMChange
   StudioPath: 
   Min: 0
   Max: 1
->>>>>>> 082e307e11a86f445276f5050b90d49f44e3827d
   Default: 0
   ID:
     data1: 0
@@ -449,15 +508,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-<<<<<<< HEAD
-  - {fileID: -7611056215975692443}
-  - {fileID: 1842123284930699829}
-  - {fileID: -5646061883017803883}
-=======
   - {fileID: 5045914446594206995}
   - {fileID: -169919040246784900}
   - {fileID: 5468330051981433722}
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
   MinDistance: 1
   MaxDistance: 20
   Length: 16744
@@ -511,6 +564,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &-5117400296518131662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-5070715235014198397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +612,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &-5031676573533266303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Rhythm/Intro
+  m_EditorClassIdentifier: 
+  Path: event:/Rhythm/Intro
+  Guid:
+    Data1: 1617142441
+    Data2: 1329897056
+    Data3: 1534734250
+    Data4: 1600065408
+  Banks:
+  - {fileID: -2393494113861099817}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14883
 --- !u!114 &-4844963636961856788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +933,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3463924285228887181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-3392641739167500535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,6 +1029,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3258062353880955420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 0
 --- !u!114 &-3052078137181043507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,6 +1064,30 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/LevelMusic/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-2932742447047031983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChangeDiscrete
   m_EditorClassIdentifier: 
   Name: BPMChangeDiscrete
   StudioPath: 
@@ -1047,6 +1223,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &-2400112585000816925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2393494113861099817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1062,18 +1262,10 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-<<<<<<< HEAD
-<<<<<<< HEAD
-  lastModified: 637862268297170806
-=======
-  lastModified: 637870987995720513
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
-=======
-  lastModified: 637873505566800837
->>>>>>> 082e307e11a86f445276f5050b90d49f44e3827d
+  lastModified: 637876134026363289
   FileSizes:
   - Name: Desktop
-    Value: 1344640
+    Value: 1545888
   Exists: 1
 --- !u!114 &-2356848491216779661
 MonoBehaviour:
@@ -1266,18 +1458,10 @@ MonoBehaviour:
   Path: FMOD/Tempo/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-<<<<<<< HEAD
-<<<<<<< HEAD
-  lastModified: 637862268297180810
-=======
-  lastModified: 637852744930834882
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
-=======
-  lastModified: 637873505566851733
->>>>>>> 082e307e11a86f445276f5050b90d49f44e3827d
+  lastModified: 637876134026373224
   FileSizes:
   - Name: Desktop
-    Value: 1238
+    Value: 1274
   Exists: 1
 --- !u!114 &-1275693532976216432
 MonoBehaviour:
@@ -1378,6 +1562,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-563162067754543916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/FeverStateChange
+  m_EditorClassIdentifier: 
+  Name: FeverStateChange
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-552265431209006387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,6 +1631,30 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-497998625343946558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -1522,20 +1754,13 @@ MonoBehaviour:
   - {fileID: 4892933999441159919}
   - {fileID: -8692866875387270940}
   - {fileID: 860218712613040965}
+  - {fileID: -5031676573533266303}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2393494113861099817}
   StringsBanks:
   - {fileID: -1518153573516385460}
-<<<<<<< HEAD
-<<<<<<< HEAD
-  cacheTime: 637862268297180810
-=======
-  cacheTime: 637870987995720513
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
-=======
-  cacheTime: 637873505566851733
->>>>>>> 082e307e11a86f445276f5050b90d49f44e3827d
+  cacheTime: 637876134026373224
   cacheVersion: 9
 --- !u!114 &1777987072598673
 MonoBehaviour:
@@ -1609,6 +1834,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &434135875898359727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChangeDiscrete
+  m_EditorClassIdentifier: 
+  Name: BPMChangeDiscrete
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 0
 --- !u!114 &589502085300041849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,7 +1933,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 116
---- !u!114 &1316281195543401738
+--- !u!114 &879940943919933008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1694,7 +1943,55 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/LevelMusic/BPMChangeDiscrete
+  m_Name: parameter:/LevelMusicv2/FeverStateChange
+  m_EditorClassIdentifier: 
+  Name: FeverStateChange
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &933161543691205599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/FeverStateChange
+  m_EditorClassIdentifier: 
+  Name: FeverStateChange
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &1005893420151377089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChangeDiscrete
   m_EditorClassIdentifier: 
   Name: BPMChangeDiscrete
   StudioPath: 
@@ -1708,7 +2005,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &1842123284930699829
+--- !u!114 &1316281195543401738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1718,7 +2015,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/LevelMusicv2/BPMChangeDiscrete
+  m_Name: parameter:/LevelMusic/BPMChangeDiscrete
   m_EditorClassIdentifier: 
   Name: BPMChangeDiscrete
   StudioPath: 
@@ -1956,7 +2253,31 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2710
+  Length: 744
+--- !u!114 &3207411877176997614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &3265185188305713870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,7 +2304,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 986
+  Length: 115
 --- !u!114 &3276514094084451448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2223,18 +2544,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - {fileID: 6523958042888353378}
-  - {fileID: 5061479189296419796}
-=======
-  - {fileID: 2363152307952263541}
-  - {fileID: 4473064486589847610}
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
-=======
   - {fileID: 4199714883862764956}
   - {fileID: -6671649242615291559}
->>>>>>> 082e307e11a86f445276f5050b90d49f44e3827d
   MinDistance: 1
   MaxDistance: 20
   Length: 7441
@@ -2262,9 +2573,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -5502784174987490232}
-  - {fileID: 1777987072598673}
-  - {fileID: -1819246103918868457}
+  - {fileID: 3207411877176997614}
+  - {fileID: -497998625343946558}
+  - {fileID: -563162067754543916}
   MinDistance: 1
   MaxDistance: 20
   Length: 16744
@@ -2292,11 +2603,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
-<<<<<<< HEAD
---- !u!114 &5061479189296419796
-=======
 --- !u!114 &5045914446594206995
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2306,30 +2613,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-<<<<<<< HEAD
-  m_Name: parameter:/LevelMusic/BPMChangeDiscrete
-  m_EditorClassIdentifier: 
-  Name: BPMChangeDiscrete
-  StudioPath: 
-  Min: 0
-  Max: 10
-=======
   m_Name: parameter:/LevelMusicv2/BPMChange
   m_EditorClassIdentifier: 
   Name: BPMChange
   StudioPath: 
   Min: 0
   Max: 1
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
   Default: 0
   ID:
     data1: 0
     data2: 0
-<<<<<<< HEAD
-  Type: 1
-=======
   Type: 0
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -2456,9 +2750,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
-<<<<<<< HEAD
---- !u!114 &6523958042888353378
-=======
 --- !u!114 &6122243685113240824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2483,8 +2774,31 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &6303620049145131593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/FeverStateChange
+  m_EditorClassIdentifier: 
+  Name: FeverStateChange
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6626982751934169672
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2507,11 +2821,7 @@ MonoBehaviour:
   Type: 0
   IsGlobal: 0
   Labels: []
-<<<<<<< HEAD
-  Exists: 1
-=======
   Exists: 0
->>>>>>> d6bc5134532286d7adbd5c1a245d01322b7c483d
 --- !u!114 &6663062962083126419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2749,6 +3059,30 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &8401503431493493999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusicv2/BPMChange
+  m_EditorClassIdentifier: 
+  Name: BPMChange
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
   IsGlobal: 0
   Labels: []
   Exists: 1

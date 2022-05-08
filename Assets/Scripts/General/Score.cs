@@ -11,7 +11,7 @@ public class Score : MonoBehaviour
     private static int multiplier = 1;
 
     // Max multiplier amount
-    [SerializeField] private int maxMultiplier = 4;
+    [SerializeField] private int maxMultiplier = 5;
 
     // Text game object for UI display
     [SerializeField] private GameObject scoreGO, multGO;
@@ -39,10 +39,16 @@ public class Score : MonoBehaviour
         DisplayScore();
     }
 
+    public static void ResetScore()
+    {
+        score = 0;
+        DisplayScore();
+    }
+
     // Toggle to manually setup multiplier
     public static void SetMultiplier(int value)
     {
-        multiplier = Mathf.Clamp(value, 0, maxMultStatic);
+        multiplier = Mathf.Clamp(value, 1, maxMultStatic);
 
         // Update UI
         DisplayScore();
@@ -56,7 +62,7 @@ public class Score : MonoBehaviour
     // Toggle to increment the multiplier by a certain amount (default = 1)
     public static void IncrementMultiplier(int value = 1)
     {
-        multiplier = Mathf.Clamp(multiplier + value, 0, maxMultStatic);
+        multiplier = Mathf.Clamp(multiplier + value, 1, maxMultStatic);
 
         // Update UI
         DisplayScore();
@@ -67,5 +73,10 @@ public class Score : MonoBehaviour
     {
         scoreText.text = score.ToString();
         multText.text = multiplier.ToString() + "x";
+    }
+
+    public static int GetScore()
+    {
+        return score;
     }
 }

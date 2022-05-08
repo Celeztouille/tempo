@@ -9,10 +9,12 @@ public class ChangeCamZone : MonoBehaviour
     [SerializeField] [Range(0, 2)] private int camPosition;
 
     private MoveCamera moveCamera;
+    private VisualBeat visualBeat;
 
     // Start is called before the first frame update
     void Start()
     {
+        visualBeat = GameObject.Find("VisualBeat").GetComponent<VisualBeat>();
         moveCamera = GameObject.Find("FirstCam").GetComponent<MoveCamera>();
         BossGrid.SnapToGrid(transform);
     }
@@ -27,19 +29,21 @@ public class ChangeCamZone : MonoBehaviour
             if (camPosition != 0)
             {
                 Multiplier.needSteps = false;
+                visualBeat.SetBothSides(true);
+
             }
             else
             {
                 Multiplier.needSteps = true;
+                visualBeat.SetBothSides(false);
             }
 
             // Gain extra life with multiplier
             if (Score.GetMultiplier() >= neededMultiplier)
             {
+                Death.lives += stepsRight;
                 BossGrid.Move(other.transform, stepsRight, 0);
             }
-
-            Destroy(gameObject);
         }
     }
 }

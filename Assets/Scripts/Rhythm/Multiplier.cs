@@ -22,7 +22,7 @@ public class Multiplier : MonoBehaviour
     [SerializeField] private int scoreGoodStep = 50;
 
     // Needed perfects in a row to step up the multiplier
-    [SerializeField] private int perfectForMult = 10;
+    [SerializeField] private int perfectForMult = 5;
 
     // Needed perfects/goods in a row to speed up the music and clock
     [SerializeField] private int beatsPerSpeedUp = 5;
@@ -42,6 +42,14 @@ public class Multiplier : MonoBehaviour
     // Internal counters
     private int perfCpt = 0;
     private int speedUpCpt = 0;
+
+    // Steps counter
+    public static int missCpt = 0;
+    public static int goodCpt = 0;
+    public static int perfectCpt = 0;
+
+    // DEBUG
+    private bool toggleMiss = false;
 
     // Multiplier, acceleration and points are freezed when player is stuck behind a wall (to prevent grinding)
     [HideInInspector] public static bool freezeMultiplier = false;
@@ -98,13 +106,23 @@ public class Multiplier : MonoBehaviour
             }
 
             // Check if it was perfect or good and add points consequently
-            if (Mathf.Abs(delta) < perfectWdw)
+            if (Mathf.Abs(delta) < goodWdw)
             {
                 Score.AddToScore(scorePerfectStep);
                 perfCpt++;
 
                 // UI Feedback
-                hitFeedback.SetHitFeedback(HitFeedback.Precision.Perfect);
+                if (Mathf.Abs(delta) < perfectWdw)
+                {
+                    hitFeedback.SetHitFeedback(HitFeedback.Precision.Perfect);
+                    perfCpt++;
+                }
+                else
+                {
+                    hitFeedback.SetHitFeedback(HitFeedback.Precision.Good);
+                    goodCpt++;
+                }
+                      
 
                 // If we made <perfectForMult> perfect kicks in a row : add 1 to multiplier
                 if (perfCpt >= perfectForMult)
@@ -114,15 +132,6 @@ public class Multiplier : MonoBehaviour
                     perfCpt = 0;
                 }
             }
-            else
-            {
-                Score.AddToScore(scoreGoodStep);
-                perfCpt = 0;
-
-                // UI Feedback
-                hitFeedback.SetHitFeedback(HitFeedback.Precision.Good);
-            }
-
             // Last beat wasn't missed
             lastMissed = false;
         }
@@ -145,7 +154,7 @@ public class Multiplier : MonoBehaviour
         }
 
         // DEBUG Show current BPM
-        debugText.GetComponent<TextMeshProUGUI>().text = ((int)InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin)).ToString();
+        //debugText.GetComponent<TextMeshProUGUI>().text = ((int)InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin)).ToString();
         // DEBUG
 
         // if we hit and multiplier is not frozen
@@ -172,7 +181,8 @@ public class Multiplier : MonoBehaviour
                     if (MoveAvatar.isBehindGlass)
                     {
                         Debug.Log("SMASH");
-                        Destroy(MoveAvatar.glassObject);
+                        // Anim glass boum
+                        //Destroy(MoveAvatar.glassObject);
                     }
                 }
                 // If we hit and there's no glass or if we don't hit and there's glass : miss
@@ -197,7 +207,8 @@ public class Multiplier : MonoBehaviour
                     if (MoveAvatar.isBehindGlass)
                     {
                         Debug.Log("SMASH");
-                        Destroy(MoveAvatar.glassObject);
+                        // Anim glass boum
+                        //Destroy(MoveAvatar.glassObject);
                     }
                 }
                 // If we hit and there's no glass or if we don't hit and there's glass : miss
@@ -208,7 +219,8 @@ public class Multiplier : MonoBehaviour
                     // Destroy glass gameObject when passing through
                     if (MoveAvatar.isBehindGlass)
                     {
-                        Destroy(MoveAvatar.glassObject);
+                        // Anim glass boum
+                        //Destroy(MoveAvatar.glassObject);
                     }
                 }
             }
@@ -259,7 +271,7 @@ public class Multiplier : MonoBehaviour
                 Miss();
 
                 // DEBUG Update BPM Display
-                debugText.GetComponent<TextMeshProUGUI>().text = InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString();
+                //debugText.GetComponent<TextMeshProUGUI>().text = InternalClock.GetPeriod(InternalClock.ClockFormat.BeatsPerMin).ToString();
                 // DEBUG
             }
         }
@@ -270,14 +282,19 @@ public class Multiplier : MonoBehaviour
     // What we need to do when we miss a beat
     private void Miss()
     {
-        Score.SetMultiplier(1); // Reset multiplier
-        Music.ResetFever();
-        Music.ResetBPM();       // Reset BPM
-        perfCpt = 0;            // Reset internal counters
-        speedUpCpt = 0;
+        if (toggleMiss)
+        {
+            Score.SetMultiplier(1); // Reset multiplier
+            Music.ResetFever();
+            Music.ResetBPM();       // Reset BPM
+            perfCpt = 0;            // Reset internal counters
+            speedUpCpt = 0;
+        }
+
 
         // UI Feedback
         hitFeedback.SetHitFeedback(HitFeedback.Precision.Miss);
+        missCpt++;
 
         // play sound effect and move player backwards if first beat missed
         if (!lastMissed)
@@ -286,13 +303,15 @@ public class Multiplier : MonoBehaviour
             if (Random.Range(0f, 1f) < firstMissBackChance)
             {
                 playerAction.SmoothMove(-1, 0);
+                Death.lives--;
             }
             else
             {
                 // If we are behind glass : step through the glass and break it
                 if (MoveAvatar.isBehindGlass)
                 {
-                    Destroy(MoveAvatar.glassObject);
+                    // Anim glass boum
+                    //Destroy(MoveAvatar.glassObject);
                 }
             }
 
@@ -305,13 +324,15 @@ public class Multiplier : MonoBehaviour
             if (Random.Range(0f, 1f) < missBackChance)
             {
                 playerAction.SmoothMove(-1, 0);
+                Death.lives--;
             }
             else
             {
                 // If we are behind glass : step through the glass and break it
                 if (MoveAvatar.isBehindGlass)
                 {
-                    Destroy(MoveAvatar.glassObject);
+                    // Anim glass boum
+                    //Destroy(MoveAvatar.glassObject);
                 }
             }
         }
@@ -343,8 +364,10 @@ public class Multiplier : MonoBehaviour
             {
                 Step(StepState.Right, true);
             }
-        }
-
-       
+            if (context.action.name == "Debug2")
+            {
+                toggleMiss = true;
+            }
+        } 
     }
 }

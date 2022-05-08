@@ -11,7 +11,8 @@
                     "id": "dea90d40-441f-4d1e-9a86-bb2eaf555f39",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "StepRight",
@@ -19,7 +20,8 @@
                     "id": "3657d604-b7c6-47f3-bb21-bf0aa35f5e95",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "HitLeft",
@@ -27,7 +29,8 @@
                     "id": "8779de1e-7f4e-4bf1-ae98-a662d0f88aa8",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "HitRight",
@@ -35,15 +38,17 @@
                     "id": "c664c909-c2cd-43d7-a8ba-54fed9011801",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "Restart",
                     "type": "Button",
-                    "id": "a9760e63-d86a-4bc9-b6f4-691569f245b9",
+                    "id": "3489ce82-3780-4491-b949-04f31e1250e8",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug1",
@@ -51,7 +56,8 @@
                     "id": "6097af36-62a7-4aed-8954-fa06aa789d1d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug2",
@@ -59,7 +65,8 @@
                     "id": "beadc060-b5f4-46cb-a6c2-53501ff60b98",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug3",
@@ -67,7 +74,8 @@
                     "id": "42067505-dd6d-4c4f-8dd9-84a72ce92136",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug4",
@@ -75,7 +83,8 @@
                     "id": "8c2032e1-6c71-4879-8f7f-10dad010c704",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug5",
@@ -83,7 +92,8 @@
                     "id": "737c44b8-359f-4aac-b321-68640a7ea44a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug6",
@@ -91,7 +101,8 @@
                     "id": "db882539-e319-40e6-9a0a-7fa37f23553c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug7",
@@ -99,7 +110,8 @@
                     "id": "4eff885f-9f87-4a12-8479-8ea69035377c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug8",
@@ -107,7 +119,8 @@
                     "id": "3a7c2bdb-1045-4a65-bd6f-8829b3843a64",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug9",
@@ -115,7 +128,8 @@
                     "id": "67050ee0-7005-404f-b50a-be3d2134829f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Debug0",
@@ -123,7 +137,8 @@
                     "id": "12a64c3d-81dd-4089-82ab-6c43b30e0ad9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -134,6 +149,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "StepLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72f2d936-4c77-4197-aada-fa72bc0186b5",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StepLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40cb4324-85ff-4d53-9687-f919e34cb987",
+                    "path": "<XInputController>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "StepLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -151,28 +188,6 @@
                 },
                 {
                     "name": "",
-                    "id": "68d79b07-4f11-4a60-bcdf-63265a497789",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "86f9280f-ca7a-4f57-85d3-3aa29a9e814a",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "74d51861-40ee-453a-b106-b777cb6580df",
                     "path": "<Keyboard>/k",
                     "interactions": "",
@@ -184,8 +199,52 @@
                 },
                 {
                     "name": "",
+                    "id": "75bf3f67-32a8-44ee-bc9f-e41210eed87e",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StepRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60ce514c-e8da-446d-b5c5-7bee60ab8cde",
+                    "path": "<XInputController>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StepRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "20ac7ea0-9b6f-481d-965a-d22a4a45825c",
                     "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ffaa079-27d2-4fef-b6a3-9c016ff82b86",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54e31b44-fe8c-4e00-ab63-58132a537582",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -294,12 +353,89 @@
                 },
                 {
                     "name": "",
+                    "id": "579c0ccd-ec04-4e79-94d9-18e8006c89b4",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HitLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f533151-4fcb-4518-8305-5d1fd0d41f47",
+                    "path": "<XInputController>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HitLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c223eed8-543f-44f2-9665-10b185ea7e03",
                     "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "HitRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9bdcec7e-1e3d-4a5c-9b21-4c8e6cd08189",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HitRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd285427-fd5c-4b6d-acda-713e6c74d73f",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HitRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c68111b1-735c-45d8-b787-7a8d8eebaba8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e10da5fa-4171-49e2-9ca0-d3b8d7396be2",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a7769c5-3367-4a2d-ad1a-50d5f6278695",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
