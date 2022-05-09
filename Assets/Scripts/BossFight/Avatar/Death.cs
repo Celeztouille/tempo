@@ -19,9 +19,12 @@ public class Death : MonoBehaviour
     [SerializeField] private MoveCameraManager cameraManager;
     [SerializeField] private MoveCamera moveCamera;
 
+    private VisualBeat visualBeat;
+
 
     void Start()
     {
+        visualBeat = GameObject.Find("VisualBeat").GetComponent<VisualBeat>();
         deathTagHandler = GameObject.Find("DeathTagsManager").GetComponent<DeathTagHandler>();
         InternalClock.beatEvent.AddListener(CheckIfDead);
     }
@@ -48,6 +51,8 @@ public class Death : MonoBehaviour
         missText.text = Multiplier.missCpt.ToString();
         progressText.text = "Progress : " + progress.ToString() + "%";
         DisplayTimer.StopTimer();
+        visualBeat.SetBothSides(false);
+        Multiplier.needSteps = true;
 
         isDead = true;
         FlashingShader.firstFlash = true;

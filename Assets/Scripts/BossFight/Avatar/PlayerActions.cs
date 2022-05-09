@@ -37,8 +37,7 @@ public class PlayerActions : MonoBehaviour
 
     private Vector3 initialPos;
 
-    //DEBUG
-    Transform debugSphere;
+    [SerializeField] private MoveCameraManager moveCamera;
 
     // Initialise tick counters at <duration>+1 :
     // trigger will set counter at 0 and counter will trigger consequent event at <duration>
@@ -130,13 +129,23 @@ public class PlayerActions : MonoBehaviour
         jumpTickCount++;
     }
 
-    public void SmoothMove(int x, int y)
+    public void SmoothMove(int x, int y, bool moveAlongCamera = true)
     {
         // Update the goal position of the object
         goalPos += new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
                                                    y * (FightHandler.gheight / (float)FightHandler.gridystep),
                                                    0f);
+
+        if (moveAlongCamera)
+        MoveCameraManager.goalPos += new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
+                                                   y * (FightHandler.gheight / (float)FightHandler.gridystep),
+                                                   0f);
         goalPos = BossGrid.SnapToGrid(goalPos);
+
+        if (moveAlongCamera)
+        {
+           // moveCamera.SmoothMove(x, y); 
+        }
     }
 
 
