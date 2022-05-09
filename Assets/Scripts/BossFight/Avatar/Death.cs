@@ -50,6 +50,7 @@ public class Death : MonoBehaviour
         DisplayTimer.StopTimer();
 
         isDead = true;
+        FlashingShader.firstFlash = true;
 
         deathScreen.SetActive(true);
     }
