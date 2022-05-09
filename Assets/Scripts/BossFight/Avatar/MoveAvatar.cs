@@ -35,7 +35,6 @@ public class MoveAvatar : MonoBehaviour
         else
         {
             playerAction.SmoothMove(FightHandler.globalSpeed, 0);
-            moveCameraManager.SmoothMove(FightHandler.globalSpeed, 0);
         }
     }
 

@@ -302,7 +302,7 @@ public class Multiplier : MonoBehaviour
             // Move player one step backwards
             if (Random.Range(0f, 1f) < firstMissBackChance && toggleMiss)
             {
-                playerAction.SmoothMove(-1, 0);
+                playerAction.SmoothMove(-1, 0, false);
                 Death.lives--;
             }
             else
@@ -323,7 +323,7 @@ public class Multiplier : MonoBehaviour
             // Move player one step backwards
             if (Random.Range(0f, 1f) < missBackChance && toggleMiss)
             {
-                playerAction.SmoothMove(-1, 0);
+                playerAction.SmoothMove(-1, 0, false);
                 Death.lives--;
             }
             else
@@ -367,6 +367,7 @@ public class Multiplier : MonoBehaviour
             if (context.action.name == "Debug2")
             {
                 toggleMiss = true;
+                Debug.Log("haaaaa");
             }
         } 
     }

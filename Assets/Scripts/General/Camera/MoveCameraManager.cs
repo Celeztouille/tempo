@@ -12,7 +12,7 @@ public class MoveCameraManager : MonoBehaviour
     private Vector3 initialPos;
 
     // Used for smoothing movements
-    private Vector3 goalPos;
+    public static Vector3 goalPos;
     private Vector3 refVelocity;
 
     private void Start()
@@ -31,7 +31,7 @@ public class MoveCameraManager : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref refVelocity, smoothTime);
-        transform.position = new Vector3(transform.position.x, avatar.transform.position.y, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, avatar.transform.position.y, transform.position.z);
     }
 
     public void ResetCamPosition()
