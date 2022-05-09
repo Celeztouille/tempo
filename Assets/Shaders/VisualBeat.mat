@@ -27,7 +27,7 @@ Material:
     - _BothSides: 0
     - _Side: 1
     - _Size: 1
-    - _Thickness: 0.101
+    - _Thickness: 0.043
     m_Colors:
     - _Color: {r: 0, g: 0.04857397, b: 1, a: 0}
   m_BuildTextureStacks: []

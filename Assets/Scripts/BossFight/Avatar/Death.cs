@@ -52,7 +52,6 @@ public class Death : MonoBehaviour
         isDead = true;
 
         deathScreen.SetActive(true);
-
     }
 
     public void InputPressed(InputAction.CallbackContext context)

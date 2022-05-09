@@ -14,13 +14,18 @@ Shader "Unlit/CelShading"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent"}
+        
+        //Tags { "RenderType"="Opaque" }
 
-        Blend SrcAlpha OneMinusSrcAlpha
-
+        Cull Off
+        
         Pass
         {
-            Tags { "LightMode" = "ForwardBase"}
+            Tags { "LightMode" = "ForwardBase" "RenderType"="Transparent" "Queue"="Transparent" }
+            Blend SrcAlpha OneMinusSrcAlpha
+            
+            //ZWrite Off
+
 
             CGPROGRAM
             #pragma vertex vert
@@ -90,7 +95,8 @@ Shader "Unlit/CelShading"
 
         Pass
         {
-            Tags { "LightMode" = "ShadowCaster"}
+            Tags { "LightMode" = "ShadowCaster" "RenderType"="Transparent" "Queue"="Transparent" }
+            Blend SrcAlpha OneMinusSrcAlpha
 
             CGPROGRAM
             #pragma vertex vert
