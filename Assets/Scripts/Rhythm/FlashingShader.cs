@@ -17,6 +17,8 @@ public class FlashingShader : MonoBehaviour
     Vector3 currentVelocity; // ref for the smoothdamp
     Vector3 currentRimVelocity; // ref for the smoothdamp
 
+    bool firstBeat = true;
+
 
     private void Awake()
     {
@@ -57,55 +59,62 @@ public class FlashingShader : MonoBehaviour
 
     void BeatUpdate()
     {
-        for (int i=0; i < mats.Length; ++i)
+        if (!firstBeat)
         {
-            float h = initColors[i].x;
-            float s = initColors[i].y;
-            float v = initColors[i].z;
-            float hr = initRimColors[i].x;
-            float sr = initRimColors[i].y;
-            float vr = initRimColors[i].z;
-
-
-
-            switch (Score.GetMultiplier())
+            for (int i = 0; i < mats.Length; ++i)
             {
-                case 1:
-                    h = Mathf.Clamp(h + Random.Range(-0.1f, 1f), 0f, 1f);
-                    v = Mathf.Clamp(v + 0.3f, 0f, 1f);
-                    flashColor = new Vector3(h, s, v);
-                    hr = Mathf.Clamp(hr + Random.Range(-0.1f, 1f), 0f, 1f);
-                    flashRimColor = new Vector3(hr, sr, vr);
-                    break;
-                case 2:
-                    h = Mathf.Clamp(h + Random.Range(-0.2f, 2f), 0f, 1f);
-                    v = Mathf.Clamp(v + 0.4f, 0f, 1f);
-                    flashColor = new Vector3(h, s + 0.1f, v);
-                    hr = Mathf.Clamp(hr + Random.Range(-0.2f, 2f), 0f, 1f);
-                    flashRimColor = new Vector3(hr, sr, vr);
-                    break;
-                case 3:
-                    h = Mathf.Clamp(h + Random.Range(-0.3f, 3f), 0f, 1f);
-                    v = Mathf.Clamp(v + 0.5f, 0f, 1f);
-                    flashColor = new Vector3(h, s + 0.2f, v);
-                    hr = Mathf.Clamp(hr + Random.Range(-0.3f, 3f), 0f, 1f);
-                    flashRimColor = new Vector3(hr, sr, vr);
-                    break;
-                case 4:
-                    h = Mathf.Clamp(h + Random.Range(-0.3f, 3f), 0f, 1f);
-                    v = Mathf.Clamp(v + 0.6f, 0f, 1f);
-                    flashColor = new Vector3(h, s + 0.3f, v);
-                    hr = Mathf.Clamp(hr + Random.Range(-0.4f, 4f), 0f, 1f);
-                    flashRimColor = new Vector3(hr, sr, vr);
-                    break;
-                default:
-                    flashColor = new Vector3(Random.Range(0, 1), 0.8f, 1f);
-                    flashRimColor = new Vector3(Random.Range(0, 1), sr, vr);
-                    break;
-            }
+                float h = initColors[i].x;
+                float s = initColors[i].y;
+                float v = initColors[i].z;
+                float hr = initRimColors[i].x;
+                float sr = initRimColors[i].y;
+                float vr = initRimColors[i].z;
 
-            currentColors[i] = flashColor;
-            currentRimColors[i] = flashRimColor;
+
+
+                switch (Score.GetMultiplier())
+                {
+                    case 1:
+                        h = Mathf.Clamp(h + Random.Range(-0.1f, 1f), 0f, 1f);
+                        v = Mathf.Clamp(v + 0.3f, 0f, 1f);
+                        flashColor = new Vector3(h, s, v);
+                        hr = Mathf.Clamp(hr + Random.Range(-0.1f, 1f), 0f, 1f);
+                        flashRimColor = new Vector3(hr, sr, vr);
+                        break;
+                    case 2:
+                        h = Mathf.Clamp(h + Random.Range(-0.2f, 2f), 0f, 1f);
+                        v = Mathf.Clamp(v + 0.4f, 0f, 1f);
+                        flashColor = new Vector3(h, s + 0.1f, v);
+                        hr = Mathf.Clamp(hr + Random.Range(-0.2f, 2f), 0f, 1f);
+                        flashRimColor = new Vector3(hr, sr, vr);
+                        break;
+                    case 3:
+                        h = Mathf.Clamp(h + Random.Range(-0.3f, 3f), 0f, 1f);
+                        v = Mathf.Clamp(v + 0.5f, 0f, 1f);
+                        flashColor = new Vector3(h, s + 0.2f, v);
+                        hr = Mathf.Clamp(hr + Random.Range(-0.3f, 3f), 0f, 1f);
+                        flashRimColor = new Vector3(hr, sr, vr);
+                        break;
+                    case 4:
+                        h = Mathf.Clamp(h + Random.Range(-0.3f, 3f), 0f, 1f);
+                        v = Mathf.Clamp(v + 0.6f, 0f, 1f);
+                        flashColor = new Vector3(h, s + 0.3f, v);
+                        hr = Mathf.Clamp(hr + Random.Range(-0.4f, 4f), 0f, 1f);
+                        flashRimColor = new Vector3(hr, sr, vr);
+                        break;
+                    default:
+                        flashColor = new Vector3(Random.Range(0, 1), 0.8f, 1f);
+                        flashRimColor = new Vector3(Random.Range(0, 1), sr, vr);
+                        break;
+                }
+
+                currentColors[i] = flashColor;
+                currentRimColors[i] = flashRimColor;
+            }
+        }
+        else
+        {
+            firstBeat = false;
         }
 
     }

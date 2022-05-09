@@ -39,6 +39,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1016691070907150457}
     m_Modifications:
+    - target: {fileID: 2859876719622040688, guid: 01fbfb87f04ad2d48bac1f8bd3bfde1b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4360298674221840218, guid: 01fbfb87f04ad2d48bac1f8bd3bfde1b, type: 3}
       propertyPath: m_Name
       value: Spike
@@ -101,6 +105,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1016691070907150457}
     m_Modifications:
+    - target: {fileID: 2859876719622040688, guid: 01fbfb87f04ad2d48bac1f8bd3bfde1b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4360298674221840218, guid: 01fbfb87f04ad2d48bac1f8bd3bfde1b, type: 3}
       propertyPath: m_Name
       value: Spike

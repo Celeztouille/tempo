@@ -115,7 +115,7 @@ public class Multiplier : MonoBehaviour
                 if (Mathf.Abs(delta) < perfectWdw)
                 {
                     hitFeedback.SetHitFeedback(HitFeedback.Precision.Perfect);
-                    perfCpt++;
+                    perfectCpt++;
                 }
                 else
                 {
@@ -300,7 +300,7 @@ public class Multiplier : MonoBehaviour
         if (!lastMissed)
         {
             // Move player one step backwards
-            if (Random.Range(0f, 1f) < firstMissBackChance)
+            if (Random.Range(0f, 1f) < firstMissBackChance && toggleMiss)
             {
                 playerAction.SmoothMove(-1, 0);
                 Death.lives--;
@@ -321,7 +321,7 @@ public class Multiplier : MonoBehaviour
         else
         {
             // Move player one step backwards
-            if (Random.Range(0f, 1f) < missBackChance)
+            if (Random.Range(0f, 1f) < missBackChance && toggleMiss)
             {
                 playerAction.SmoothMove(-1, 0);
                 Death.lives--;
