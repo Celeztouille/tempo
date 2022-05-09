@@ -12,7 +12,7 @@ public class MoveCameraManager : MonoBehaviour
     private Vector3 initialPos;
 
     // Used for smoothing movements
-    private Vector3 goalPos;
+    public static Vector3 goalPos;
     private Vector3 refVelocity;
 
     private void Start()

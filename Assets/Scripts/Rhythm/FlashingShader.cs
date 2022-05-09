@@ -17,7 +17,7 @@ public class FlashingShader : MonoBehaviour
     Vector3 currentVelocity; // ref for the smoothdamp
     Vector3 currentRimVelocity; // ref for the smoothdamp
 
-    bool firstBeat = true;
+    public static bool firstFlash = true;
 
 
     private void Awake()
@@ -59,7 +59,7 @@ public class FlashingShader : MonoBehaviour
 
     void BeatUpdate()
     {
-        if (!firstBeat)
+        if (!firstFlash)
         {
             for (int i = 0; i < mats.Length; ++i)
             {
@@ -108,13 +108,19 @@ public class FlashingShader : MonoBehaviour
                         break;
                 }
 
+                if (Score.GetMultiplier() < 4)
+                {
+                    flashColor.z = 0.5f;
+                    flashRimColor.z = 0.5f;
+                }
+
                 currentColors[i] = flashColor;
                 currentRimColors[i] = flashRimColor;
             }
         }
         else
         {
-            firstBeat = false;
+            firstFlash = false;
         }
 
     }
