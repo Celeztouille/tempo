@@ -31,7 +31,7 @@ public class MoveCameraManager : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref refVelocity, smoothTime);
-        //transform.position = new Vector3(transform.position.x, avatar.transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, avatar.transform.position.y, transform.position.z);
     }
 
     public void ResetCamPosition()

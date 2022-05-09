@@ -133,14 +133,21 @@ public class PlayerActions : MonoBehaviour
     {
         // Update the goal position of the object
         goalPos += new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
-                                                   y * (FightHandler.gheight / (float)FightHandler.gridystep),
-                                                   0f);
+                               y * (FightHandler.gheight / (float)FightHandler.gridystep),
+                               0f);
+        goalPos = BossGrid.SnapToGrid(goalPos);
+
 
         if (moveAlongCamera)
-        MoveCameraManager.goalPos += new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
+        {
+            MoveCameraManager.goalPos += new Vector3(x * (FightHandler.gwidth / (float)FightHandler.gridxstep),
                                                    y * (FightHandler.gheight / (float)FightHandler.gridystep),
                                                    0f);
-        goalPos = BossGrid.SnapToGrid(goalPos);
+            MoveCameraManager.goalPos = BossGrid.SnapToGrid(MoveCameraManager.goalPos);
+        }
+        
+        
+
 
         if (moveAlongCamera)
         {

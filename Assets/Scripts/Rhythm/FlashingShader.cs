@@ -108,6 +108,12 @@ public class FlashingShader : MonoBehaviour
                         break;
                 }
 
+                if (Score.GetMultiplier() < 4)
+                {
+                    flashColor.z = 0.5f;
+                    flashRimColor.z = 0.5f;
+                }
+
                 currentColors[i] = flashColor;
                 currentRimColors[i] = flashRimColor;
             }
