@@ -9,6 +9,8 @@ public class StartRhythm : MonoBehaviour
 {
     private const float beatPeriod = 0.4651f;
 
+    private Animator Run;
+
     // Has the level started ?
     public static bool start = false;
     private static bool hasMusicStarted = false;
@@ -20,6 +22,8 @@ public class StartRhythm : MonoBehaviour
     void Awake()
     {
         readyText = GameObject.Find("Ready 321").GetComponent<TextMeshProUGUI>();
+
+        Run = GetComponent<Animator>();
     }
 
     private void Update()
@@ -56,7 +60,12 @@ public class StartRhythm : MonoBehaviour
                 Music.StartMusic(); // Start track and clock
                 DisplayTimer.StartTimer(); // Start UI Timer
                 start = true;
+                if (Run != null)
+                {
+                    Run.SetTrigger("fastRun");
+                }
                 readyText.transform.gameObject.SetActive(false); // Remove Text
+                
             }
             timer -= Time.deltaTime;
         }
