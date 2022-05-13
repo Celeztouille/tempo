@@ -34,9 +34,8 @@ public class InputSign : MonoBehaviour
         speed = 1f / InternalClock.GetPeriod();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        cursor.position += Vector3.right * sign * speed * Time.deltaTime;
+        cursor.localPosition += Vector3.right * sign * speed * Time.deltaTime;
     }
 }
