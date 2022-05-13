@@ -75,27 +75,13 @@ public class FlashingShader : MonoBehaviour
                 switch (Score.GetMultiplier())
                 {
                     case 1:
-                        h = Mathf.Clamp(h + Random.Range(-0.1f, 1f), 0f, 1f);
-                        v = Mathf.Clamp(v + 0.3f, 0f, 1f);
-                        flashColor = new Vector3(h, s, v);
-                        hr = Mathf.Clamp(hr + Random.Range(-0.1f, 1f), 0f, 1f);
-                        flashRimColor = new Vector3(hr, sr, vr);
-                        break;
-                    case 2:
-                        h = Mathf.Clamp(h + Random.Range(-0.2f, 2f), 0f, 1f);
-                        v = Mathf.Clamp(v + 0.4f, 0f, 1f);
-                        flashColor = new Vector3(h, s + 0.1f, v);
-                        hr = Mathf.Clamp(hr + Random.Range(-0.2f, 2f), 0f, 1f);
-                        flashRimColor = new Vector3(hr, sr, vr);
-                        break;
-                    case 3:
                         h = Mathf.Clamp(h + Random.Range(-0.3f, 3f), 0f, 1f);
                         v = Mathf.Clamp(v + 0.5f, 0f, 1f);
                         flashColor = new Vector3(h, s + 0.2f, v);
                         hr = Mathf.Clamp(hr + Random.Range(-0.3f, 3f), 0f, 1f);
                         flashRimColor = new Vector3(hr, sr, vr);
                         break;
-                    case 4:
+                    case 2:
                         h = Mathf.Clamp(h + Random.Range(-0.3f, 3f), 0f, 1f);
                         v = Mathf.Clamp(v + 0.6f, 0f, 1f);
                         flashColor = new Vector3(h, s + 0.3f, v);
@@ -132,12 +118,12 @@ public class FlashingShader : MonoBehaviour
             currentColors[i] = Vector3.SmoothDamp(currentColors[i],
                                                   initColors[i],
                                                   ref currentVelocity,
-                                                  InternalClock.GetPeriod() / 2f);
+                                                  InternalClock.GetPeriod() / 1.3f);
 
             currentRimColors[i] = Vector3.SmoothDamp(currentRimColors[i],
                                                      initRimColors[i],
                                                      ref currentRimVelocity,
-                                                     InternalClock.GetPeriod() / 2f);
+                                                     InternalClock.GetPeriod() / 1.3f);
 
             float h = currentColors[i].x;
             float s = currentColors[i].y;
